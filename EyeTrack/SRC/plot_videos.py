@@ -76,4 +76,8 @@ def create_plot_video_in_intervall( signal, output_file, interval_start, interva
 
 
 if __name__ == '__main__':
-	create_plot_video_in_intervall(...)
+    path = '/Users/ei-student/recordings/2016_06_21/readingbiothesis/exports/0-8287/surfaces/fixations_on_surface_unnamed_1466499419.751.csv'
+    csv_data = np.genfromtxt(path, delimiter = ',')
+    fix_data = []
+    fix_data.append([csv_data[:, 7], csv_data[:, 8]])
+    create_plot_video_in_intervall(fix_data, '/Users/ei-student/Downloads/', csv_data[0, 1], csv_data[-1, 1])
