@@ -14,7 +14,7 @@ def create_plot_video_in_intervall( signal, output_file, interval_start, interva
     print( "--> create signal video ", output_file)
     FFMpegWriter = manimation.writers['ffmpeg']
     title = "testvideo"
-    metadata = dict(title=title, artist='Peter Hevesi',
+    metadata = dict(title=title, artist='Victoria the magnificent',
             comment='igroups')
     writer = FFMpegWriter(fps=fps, metadata=metadata, bitrate=-1, codec="libx264", extra_args=['-pix_fmt', 'yuv420p'])
 
