@@ -7,7 +7,7 @@ Created on Jul 5, 2016
 import os
 import pickle
 import numpy as np
-import plot_videos as pltv
+#import plot_videos as pltv
 import matplotlib.pyplot as plt
 
 def read_eyetracker_data( recording_dir ):
@@ -24,17 +24,23 @@ def read_eyetracker_data( recording_dir ):
     return pupil_data
 
 def get_data( num ):
-    headData = []
-    permPath = '/home/ei/Desktop/origami_rec'
-    eyePath = os.path.join(permPath, 'eyetracker', num)
-    eyeData = read_eyetracker_data( eyePath )
-    headPath = os.path.join(permPath, 'head_movement', num, num + '_headtrackerdata.log')
-    headData = np.genfromtxt( headPath, delimiter=" ", invalid_raise=False )
+    permPath = '/Users/ei-student/Documents/Origami Tests'
+    eyePath = os.path.join(permPath, num, num + '_eyetracker')
+#    eyeData = read_eyetracker_data( eyePath )
+#    headPath = os.path.join(permPath, 'head_movement', num, num + '_headtrackerdata.log')
+#    headData = np.genfromtxt( headPath, delimiter=" ", invalid_raise=False )
+    fixData = get_fixations( eyePath )
     #with open(headPath, 'rb') as data:
     #    for line in data:
     #        line = line.split()
     #        headData.append(line)
-    return eyeData, headData
+    return fixData
+
+def get_fixations( path ):
+    fixPath = os.path.join(path, 'exports', 'fixations.csv')
+    fixations = np.genfromtxt(fixPath, delimiter = ',')
+    fixations = np.asarray(fixations)
+    return fixations
 
 def get_linAccHead_data( hData, times ):
     lin = []
@@ -88,28 +94,29 @@ def get_normal_time( trackData ):
 
 if __name__ == '__main__':
     
-    eyeData, headData = get_data( 'p01' )
-    signalData = []
-    eyeUse = get_pos_data( eyeData )
-    times, vels, xVels, yVels, pts = linVelocities( eyeUse )
-    for i in range(len(eyeUse)):
-        signalData.append([eyeUse[i, 3], eyeUse[i, 4]])
-    newTimes = []
-    for i in range(len(times)):
-        newTimes.append(times[i] * 1000)
-    headUse = get_linAccHead_data( headData, get_normal_time( headData ) )
-    f, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1, sharex = True)
-    ax1.plot( newTimes, xVels, 'c' )
-    ax1.set_title('X Velocities Eye')
-    ax2.plot( newTimes, yVels, 'k' )
-    ax2.set_title('Y Velocities Eye')
-    ax3.plot( headUse[:, 0], headUse[:, 2], 'r' )
-    ax3.set_title('Y Velocities Head')
-    ax4.plot( headUse[:, 0], headUse[:, 3], 'g' )
-    ax4.set_title( 'Z Velocities Head')
+    fixations1 = get_data( 'p02' )
+    fixations2 = get_data( 'p04' )
+#    signalData = []
+#    eyeUse = get_pos_data( eyeData )
+#    times, vels, xVels, yVels, pts = linVelocities( eyeUse )
+#    for i in range(len(eyeUse)):
+#        signalData.append([eyeUse[i, 3], eyeUse[i, 4]])
+#    newTimes = []
+#    for i in range(len(times)):
+#        newTimes.append(times[i] * 1000)
+    #headUse = get_linAccHead_data( headData, get_normal_time( headData ) )
+    f, (ax1, ax2) = plt.subplots(2, 1)
+    ax1.plot( fixations1[:, 5], fixations1[:, 6], '.c-' )
+    ax1.set_title('Fixations of second person')
+    ax2.plot( fixations2[:, 5], fixations2[:, 6], '.k-' )
+    ax2.set_title('Fixations of fourth person')
+#    ax3.plot( headUse[:, 0], headUse[:, 2], 'r' )
+#    ax3.set_title('Y Velocities Head')
+#    ax4.plot( headUse[:, 0], headUse[:, 3], 'g' )
+#    ax4.set_title( 'Z Velocities Head')
     plt.show()
-    signalData = np.array(signalData)
-    pltv.create_plot_video_in_intervall(signalData, 'p01.avi', eyeUse[0][0], eyeUse[len(eyeUse) - 1][0])
+#    signalData = np.array(signalData)
+#    pltv.create_plot_video_in_intervall(signalData, 'p01.avi', eyeUse[0][0], eyeUse[len(eyeUse) - 1][0])
 
     
     

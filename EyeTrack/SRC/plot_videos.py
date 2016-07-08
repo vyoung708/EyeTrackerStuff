@@ -1,11 +1,7 @@
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-import matplotlib.lines as pll
 import matplotlib.animation as manimation
-from datetime import datetime, timedelta
-from matplotlib.ticker import MaxNLocator
-from matplotlib.dates import DateFormatter
 
 import numpy as np
 
