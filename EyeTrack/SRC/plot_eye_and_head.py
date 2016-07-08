@@ -7,6 +7,7 @@ Created on Jul 5, 2016
 import os
 import pickle
 import numpy as np
+import plot_videos as pltv
 import matplotlib.pyplot as plt
 
 def read_eyetracker_data( recording_dir ):
@@ -24,7 +25,7 @@ def read_eyetracker_data( recording_dir ):
 
 def get_data( num ):
     headData = []
-    permPath = '/Users/ei-student/Desktop/origami_rec'
+    permPath = '/home/ei/Desktop/origami_rec'
     eyePath = os.path.join(permPath, 'eyetracker', num)
     eyeData = read_eyetracker_data( eyePath )
     headPath = os.path.join(permPath, 'head_movement', num, num + '_headtrackerdata.log')
@@ -88,21 +89,27 @@ def get_normal_time( trackData ):
 if __name__ == '__main__':
     
     eyeData, headData = get_data( 'p01' )
+    signalData = []
     eyeUse = get_pos_data( eyeData )
     times, vels, xVels, yVels, pts = linVelocities( eyeUse )
+    for i in range(len(eyeUse)):
+        signalData.append([eyeUse[i, 3], eyeUse[i, 4]])
+    newTimes = []
     for i in range(len(times)):
-        times[i] = times[i] * 1000
+        newTimes.append(times[i] * 1000)
     headUse = get_linAccHead_data( headData, get_normal_time( headData ) )
     f, (ax1, ax2, ax3, ax4) = plt.subplots(4, 1, sharex = True)
-    ax1.plot( times, xVels, 'c' )
+    ax1.plot( newTimes, xVels, 'c' )
     ax1.set_title('X Velocities Eye')
-    ax2.plot( times, yVels, 'k' )
+    ax2.plot( newTimes, yVels, 'k' )
     ax2.set_title('Y Velocities Eye')
     ax3.plot( headUse[:, 0], headUse[:, 2], 'r' )
     ax3.set_title('Y Velocities Head')
     ax4.plot( headUse[:, 0], headUse[:, 3], 'g' )
     ax4.set_title( 'Z Velocities Head')
     plt.show()
-    
+    signalData = np.array(signalData)
+    pltv.create_plot_video_in_intervall(signalData, 'p01.avi', eyeUse[0][0], eyeUse[len(eyeUse) - 1][0])
+
     
     
