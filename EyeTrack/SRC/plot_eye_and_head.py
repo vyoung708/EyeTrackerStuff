@@ -26,7 +26,7 @@ def read_eyetracker_data( recording_dir ):
 def get_data( num ):
     permPath = '/Users/ei-student/Documents/Origami Tests'
     eyePath = os.path.join(permPath, num, num + '_eyetracker')
-#    eyeData = read_eyetracker_data( eyePath )
+    eyeData = read_eyetracker_data( eyePath )
 #    headPath = os.path.join(permPath, 'head_movement', num, num + '_headtrackerdata.log')
 #    headData = np.genfromtxt( headPath, delimiter=" ", invalid_raise=False )
     fixData = get_fixations( eyePath )
@@ -34,7 +34,7 @@ def get_data( num ):
     #    for line in data:
     #        line = line.split()
     #        headData.append(line)
-    return fixData
+    return fixData, eyeData
 
 def get_fixations( path ):
     fixPath = os.path.join(path, 'exports', 'fixations.csv')
@@ -94,8 +94,8 @@ def get_normal_time( trackData ):
 
 if __name__ == '__main__':
     
-    fixations1 = get_data( 'p02' )
-    fixations2 = get_data( 'p04' )
+    fixations1, eyeDat1 = get_data( 'p02' )
+    fixations2, eyeDat2 = get_data( 'p04' )
 #    signalData = []
 #    eyeUse = get_pos_data( eyeData )
 #    times, vels, xVels, yVels, pts = linVelocities( eyeUse )
@@ -105,10 +105,12 @@ if __name__ == '__main__':
 #    for i in range(len(times)):
 #        newTimes.append(times[i] * 1000)
     #headUse = get_linAccHead_data( headData, get_normal_time( headData ) )
+    print len(fixations1)
+    print len(fixations2)
     f, (ax1, ax2) = plt.subplots(2, 1)
-    ax1.plot( fixations1[:, 5], fixations1[:, 6], '.c-' )
+    ax1.plot( fixations1[:, 5], fixations1[:, 6], '.c' )
     ax1.set_title('Fixations of second person')
-    ax2.plot( fixations2[:, 5], fixations2[:, 6], '.k-' )
+    ax2.plot( fixations2[:, 5], fixations2[:, 6], '.k' )
     ax2.set_title('Fixations of fourth person')
 #    ax3.plot( headUse[:, 0], headUse[:, 2], 'r' )
 #    ax3.set_title('Y Velocities Head')
@@ -117,6 +119,18 @@ if __name__ == '__main__':
     plt.show()
 #    signalData = np.array(signalData)
 #    pltv.create_plot_video_in_intervall(signalData, 'p01.avi', eyeUse[0][0], eyeUse[len(eyeUse) - 1][0])
-
+    f2, (ax3, ax4, ax5, ax6) = plt.subplots(4, 1)
+    times, velocities, xVels, yVels, pts = linVelocities( get_pos_data( eyeDat1 ) )
+    times2, velocities2, xVels2, yVels2, pts2 = linVelocities( get_pos_data( eyeDat2 ) )
+    ax3.plot( times, xVels, 'c')
+    ax4.plot( times, yVels, 'k')
+    ax5.plot( times2, xVels2, 'r')
+    ax6.plot( times2, yVels2, 'm')
+    ax3.set_title('x Velocities of second person')
+    ax4.set_title('y Velocities of second person')
+    ax5.set_title('x Velocities of fourth person')
+    ax6.set_title('y Velocities of fourth person')
+    
+    plt.show()
     
     
