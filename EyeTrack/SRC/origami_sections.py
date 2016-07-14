@@ -6,7 +6,7 @@ Created on Jul 12, 2016
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-import io
+#import io
 from scipy.signal.ltisys import step2
 
 def get_fixations( num ):
