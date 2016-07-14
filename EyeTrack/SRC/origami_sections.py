@@ -56,12 +56,11 @@ def get_origami_times():
             i += 1
     return np.asarray(p01), np.asarray(p02), np.asarray(p03), np.asarray(p04), np.asarray(p05), np.asarray(p06), np.asarray(p07)
 
-def get_origami_steps_time():
+def get_origami_steps_time(p, o):
     times = []
-    with open('/Users/ei-student/Documents/Origami Step Times.txt', 'rb') as stepT:
+    with open('/Users/ei-student/Documents/Origami Step Times %s %s.txt' % (p, o), 'rb') as stepT:
         for line in stepT:
             line = line.split()
-            print line
             times.append(line[1])
     return times
 
@@ -77,7 +76,58 @@ if __name__ == '__main__':
 #     print p06
 #     print p07
     
-    times = get_origami_steps_time()
+    times = get_origami_steps_time('p02', 'o1')
+    step1 = get_points( get_fixations( 'p02' ), get_sec(times[0]), get_sec(times[1]) )
+    step2 = get_points( get_fixations( 'p02' ), get_sec(times[1]), get_sec(times[2]) )
+    step3= get_points( get_fixations( 'p02' ), get_sec(times[2]), get_sec(times[3]) )
+    step4= get_points( get_fixations( 'p02' ), get_sec(times[3]), get_sec(times[4]) )
+    step5= get_points( get_fixations( 'p02' ), get_sec(times[4]), get_sec(times[5]) )
+    step6= get_points( get_fixations( 'p02' ), get_sec(times[5]), get_sec(times[6]) )
+    step7= get_points( get_fixations( 'p02' ), get_sec(times[6]), get_sec(times[7]) )
+    step8= get_points( get_fixations( 'p02' ), get_sec(times[7]), get_sec(times[8]) )
+    step9= get_points( get_fixations( 'p02' ), get_sec(times[8]), get_sec(times[9]) )
+    step10= get_points( get_fixations( 'p02' ), get_sec(times[9]), get_sec(times[10]) )
+    o1, o2, o3 = [], [], []
+    print 'o1'
+    i = 0
+    o1.append ((float(len(step1))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(len(step2))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(len(step3))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(len(step4))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(len(step5))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(len(step6))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(len(step7))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(len(step8))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(len(step9))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(len(step10))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i = 0
+    
+    colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
+    plt.figure()
+    x = np.arange(1, 11)
+    plt.bar(x, o1, width = .4, color = colors)
+
+    print np.mean(o1)
+    
+#     labels = np.arange(1, 11)
+#     lbels = []
+#     for item in labels:
+#         lbels.append(str(item))
+# 
+#     plt.figure()
+#     plt.hist((step1[:, 1], step2[:, 1], step3[:, 1], step4[:, 1], step5[:, 1], step6[:, 1], step7[:, 1], step8[:, 1], step9[:, 1], step10[:, 1]), label = lbels, normed = True)
+#     plt.legend()
+    
+    times = get_origami_steps_time('p02', 'o2')
     step1 = get_points( get_fixations( 'p02' ), get_sec(times[0]), get_sec(times[1]) )
     step2 = get_points( get_fixations( 'p02' ), get_sec(times[1]), get_sec(times[2]) )
     step3= get_points( get_fixations( 'p02' ), get_sec(times[2]), get_sec(times[3]) )
@@ -94,30 +144,153 @@ if __name__ == '__main__':
     step14= get_points( get_fixations( 'p02' ), get_sec(times[13]), get_sec(times[14]) )
     step15= get_points( get_fixations( 'p02' ), get_sec(times[14]), get_sec(times[15]) )
     
-    print len(step1)
-    print len(step2)
-    print len(step3)
-    print len(step4)
-    print len(step5)
-    print len(step6)
-    print len(step7)
-    print len(step8)
-    print len(step9)
-    print len(step10)
-    print len(step11)
-    print len(step12)
-    print len(step13)
-    print len(step14)
-    print len(step15)
-    labels = np.arange(1, 16)
-    lbels = []
-    for item in labels:
-        lbels.append(str(item))
-
+    print 'o2'
+    i = 0
+    o2.append ((float(len(step1))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step2))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step3))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step4))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step5))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step6))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step7))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step8))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step9))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step10))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step11))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step12))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step13))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step14))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(len(step15))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i = 0
+    
     plt.figure()
-    plt.hist((step1[:, 1], step2[:, 1], step3[:, 1], step4[:, 1], step5[:, 1], step6[:, 1], step7[:, 1], step8[:, 1], step9[:, 1], step10[:, 1], step11[:, 1], step12[:, 1], step13[:, 1], step14[:, 1], step15[:, 1]), label = lbels, normed = True)
-    plt.legend()
-    plt.show()
+    x = np.arange(1, 16)
+    plt.bar(x, o2, width = .4, color = colors)
+    print np.mean(o2)
+#     labels = np.arange(1, 16)
+#     lbels = []
+#     for item in labels:
+#         lbels.append(str(item))
+# 
+#     plt.figure()
+#     plt.hist((step1[:, 1], step2[:, 1], step3[:, 1], step4[:, 1], step5[:, 1], step6[:, 1], step7[:, 1], step8[:, 1], step9[:, 1], step10[:, 1], step11[:, 1], step12[:, 1], step13[:, 1], step14[:, 1], step15[:, 1]), label = lbels, normed = True)
+#     plt.legend()
+    
+    times = get_origami_steps_time('p02', 'o3')
+    step1 = get_points( get_fixations( 'p02' ), get_sec(times[0]), get_sec(times[1]) )
+    step2 = get_points( get_fixations( 'p02' ), get_sec(times[1]), get_sec(times[2]) )
+    step3= get_points( get_fixations( 'p02' ), get_sec(times[2]), get_sec(times[3]) )
+    step4= get_points( get_fixations( 'p02' ), get_sec(times[3]), get_sec(times[4]) )
+    step5= get_points( get_fixations( 'p02' ), get_sec(times[4]), get_sec(times[5]) )
+    step6= get_points( get_fixations( 'p02' ), get_sec(times[5]), get_sec(times[6]) )
+    step7= get_points( get_fixations( 'p02' ), get_sec(times[6]), get_sec(times[7]) )
+    step8= get_points( get_fixations( 'p02' ), get_sec(times[7]), get_sec(times[8]) )
+    step9= get_points( get_fixations( 'p02' ), get_sec(times[8]), get_sec(times[9]) )
+    step10= get_points( get_fixations( 'p02' ), get_sec(times[9]), get_sec(times[10]) )
+    step11= get_points( get_fixations( 'p02' ), get_sec(times[10]), get_sec(times[11]) )
+    step12= get_points( get_fixations( 'p02' ), get_sec(times[11]), get_sec(times[12]) )
+    step13= get_points( get_fixations( 'p02' ), get_sec(times[12]), get_sec(times[13]) )
+    step14= get_points( get_fixations( 'p02' ), get_sec(times[13]), get_sec(times[14]) )
+    step15= get_points( get_fixations( 'p02' ), get_sec(times[14]), get_sec(times[15]) )
+    step16= get_points( get_fixations( 'p02' ), get_sec(times[15]), get_sec(times[16]) )
+    step17= get_points( get_fixations( 'p02' ), get_sec(times[16]), get_sec(times[17]) )
+    step18= get_points( get_fixations( 'p02' ), get_sec(times[17]), get_sec(times[18]) )
+    step19= get_points( get_fixations( 'p02' ), get_sec(times[18]), get_sec(times[19]) )
+    step20= get_points( get_fixations( 'p02' ), get_sec(times[19]), get_sec(times[20]) )
+    step21= get_points( get_fixations( 'p02' ), get_sec(times[20]), get_sec(times[21]) )
+    step22= get_points( get_fixations( 'p02' ), get_sec(times[21]), get_sec(times[22]) )
+    step23= get_points( get_fixations( 'p02' ), get_sec(times[22]), get_sec(times[23]) )
+    step24= get_points( get_fixations( 'p02' ), get_sec(times[23]), get_sec(times[24]) )
+    step25= get_points( get_fixations( 'p02' ), get_sec(times[24]), get_sec(times[25]) )
+    step26= get_points( get_fixations( 'p02' ), get_sec(times[25]), get_sec(times[26]) )
+    step27= get_points( get_fixations( 'p02' ), get_sec(times[26]), get_sec(times[27]) )
+    
+    print 'o3'
+    i = 0
+    o3.append ((float(len(step1))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step2))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step3))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step4))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step5))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step6))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step7))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step8))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step9))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step10))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step11))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step12))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step13))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step14))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step15))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step16))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step17))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step18))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step19))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step20))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step21))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step22))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step23))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step24))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step25))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step26))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(len(step27))) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i = 0
+    
+    plt.figure()
+    x = np.arange(1, 28)
+    plt.bar(x, o3, width = .4, color = colors)
+    
+    print np.mean(o3)
+    
+#     labels = np.arange(1, 28)
+#     lbels = []
+#     for item in labels:
+#         lbels.append(str(item))
+# 
+#     plt.figure()
+#     plt.hist((step1[:, 1], step2[:, 1], step3[:, 1], step4[:, 1], step5[:, 1], step6[:, 1], step7[:, 1], step8[:, 1], step9[:, 1], step10[:, 1], step11[:, 1], step12[:, 1], step13[:, 1], step14[:, 1], step15[:, 1], step16[:, 1], step17[:, 1], step18[:, 1], step19[:, 1], step20[:, 1], step21[:, 1], step22[:, 1], step23[:, 1], step24[:, 1], step25[:, 1], step26[:, 1], step27[:, 1]), label = lbels, normed = True)
+#     plt.legend()
+#     plt.show()
     
     origami11 = get_points( get_fixations( 'p01' ), get_sec(p01[0, 2]), get_sec(p01[0, 3]) )
     origami21 = get_points( get_fixations( 'p02' ), get_sec(p02[0, 2]), get_sec(p02[0, 3]) )
@@ -213,7 +386,7 @@ if __name__ == '__main__':
     plt.figure()
     plt.bar(x, [length13, length23, length33, length43, length53, length63, length73], width = .4, color = colors)
     plt.title('Origami 03 Fixations per Second per Person')
-    
+    plt.show()
 #     with io.FileIO('Mean fixation times for Origami.txt', 'w') as ofile:
 #            
 #         ofile.write('Mean fixation time for all \n \n')
