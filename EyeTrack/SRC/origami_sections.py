@@ -73,6 +73,16 @@ def get_vol_and_inv_fix( fixations ):
             inv.append(item)
     return len(vol), len(inv)
 
+def difficulty( origami ):
+    hard = 0
+    easy = 0
+    for i in range(len(origami)):
+        if origami[i] == np.max(origami):
+            hard = i + 1
+        elif origami[i] == np.min(origami):
+            easy = i + 1
+    return hard, easy
+
 if __name__ == '__main__':
     
     p01, p02, p03, p04, p05, p06, p07 = get_origami_times()
@@ -185,11 +195,8 @@ if __name__ == '__main__':
     plt.bar(x, o1, width = .4, color = colors)
     plt.title('Origami 1 p02 Voluntary and Involuntary Fix p Sec each step')
     
-    for i in range(len(o1)):
-        if o1[i] == np.max(o1):
-            print 'step %d was hard' % (i + 1)
-        elif o1[i] == np.min(o1):
-            print 'step %d was easy' % (i + 1)
+    hS, eS = difficulty(o1)
+    print 'step %d was hard and step %d was easy' % (hS, eS)
     
     print np.mean(o1)
     
@@ -287,13 +294,11 @@ if __name__ == '__main__':
     x = np.arange(1, len(o2) + 1)
     plt.bar(x, o2, width = .4, color = colors)
     plt.title('Origami 2 p02 Voluntary and Involuntary Fix p Sec each step')
+    
     print np.mean(o2)
     
-    for i in range(len(o2)):
-        if o2[i] == np.max(o2):
-            print 'step %d was hard' % (i + 1)
-        elif o2[i] == np.min(o2):
-            print 'step %d was easy' % (i + 1)
+    hS, eS = difficulty(o2)
+    print 'step %d was hard and step %d was easy' % (hS, eS)
     
 #     labels = np.arange(1, 16)
 #     lbels = []
@@ -450,13 +455,11 @@ if __name__ == '__main__':
     x = np.arange(1, len(o3) + 1)
     plt.bar(x, o3, width = .4, color = colors)
     plt.title('Origami 3 p02 Voluntary and Involuntary Fix p Sec each step')
+    
     print np.mean(o3)
     
-    for i in range(len(o3)):
-        if o3[i] == np.max(o3):
-            print 'step %d was hard' % (i + 1)
-        elif o3[i] == np.min(o3):
-            print 'step %d was easy' % (i + 1)
+    hS, eS = difficulty(o3)
+    print 'step %d was hard and step %d was easy' % (hS, eS)
     
 #     labels = np.arange(1, 28)
 #     lbels = []
