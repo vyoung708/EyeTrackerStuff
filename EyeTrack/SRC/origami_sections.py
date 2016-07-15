@@ -93,9 +93,7 @@ if __name__ == '__main__':
 #     print p03
 #     print p04
 #     print p05
-#     print p06
-#     print p07
-    
+#     print p06#     print p07   
 #     fix1 = get_fixations('p01')
 #     fix2 = get_fixations('p02')
 #     fix3 = get_fixations('p03')
@@ -133,6 +131,7 @@ if __name__ == '__main__':
 #     plt.bar(x, invVol, width = .4, color = colors)
 #     plt.show()
 #     
+    
     times = get_origami_steps_time('p02', 'o1')
     step1 = get_points( get_fixations( 'p02' ), get_sec(times[0]), get_sec(times[1]) )
     step2 = get_points( get_fixations( 'p02' ), get_sec(times[1]), get_sec(times[2]) )
@@ -160,22 +159,22 @@ if __name__ == '__main__':
     print 'o1'
     i = 0
     o1.append ((float(stepv1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
- #   o1.append ((float(stepi1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
     i += 1
     o1.append (float((stepv2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
- #   o1.append ((float(stepi2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
     i += 1
     o1.append ((float(stepv3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
- #   o1.append ((float(stepi3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
     i += 1
     o1.append ((float(stepv4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
- #   o1.append ((float(stepi4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
     i += 1
     o1.append ((float(stepv5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
- #   o1.append ((float(stepi5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
     i += 1
     o1.append ((float(stepv6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
- #   o1.append ((float(stepi6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
     i += 1
     o1.append ((float(stepv7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
 #    o1.append ((float(stepi7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
@@ -260,7 +259,7 @@ if __name__ == '__main__':
 #    o2.append ((float(stepi5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
     i += 1
     o2.append ((float(stepv6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
- #   o2.append ((float(stepi6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o2.append ((float(stepi6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
     i += 1
     o2.append ((float(stepv7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
 #    o2.append ((float(stepi7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
@@ -436,7 +435,7 @@ if __name__ == '__main__':
 #    o3.append ((float(stepi22)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
     i += 1
     o3.append ((float(stepv23)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
- #   o3.append ((float(stepi23)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o3.append ((float(stepi23)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
     i += 1
     o3.append ((float(stepv24)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
 #    o3.append ((float(stepi24)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
