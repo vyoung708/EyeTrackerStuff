@@ -60,8 +60,7 @@ def get_origami_steps_time(p, o):
     times = []
     with open('C:\Users\mma_v\Documents\Origami Step Times %s %s.txt' % (p, o), 'rb') as stepT:
         for line in stepT:
-            line = line.split()
-            times.append(line[1])
+            times.append(line)
     return times
 
 def get_vol_and_inv_fix( fixations ):
@@ -86,15 +85,16 @@ def difficulty( origami ):
 
 if __name__ == '__main__':
     
-    p01, p02, p03, p04, p05, p06, p07 = get_origami_times()
-    colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
-    
+#     p01, p02, p03, p04, p05, p06, p07 = get_origami_times()
+#     colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
+#     
 #     print p01
 #     print p02
 #     print p03
 #     print p04
 #     print p05
-#     print p06#     print p07   
+#     print p06
+#     #     print p07   
 #     fix1 = get_fixations('p01')
 #     fix2 = get_fixations('p02')
 #     fix3 = get_fixations('p03')
@@ -102,7 +102,7 @@ if __name__ == '__main__':
 #     fix5 = get_fixations('p05')
 #     fix6 = get_fixations('p06')
 #     fix7 = get_fixations('p07')
-#     
+#      
 #     vol1, inv1 = get_vol_and_inv_fix(fix1)
 #     vol2, inv2 = get_vol_and_inv_fix(fix2)
 #     vol3, inv3 = get_vol_and_inv_fix(fix3)
@@ -110,7 +110,7 @@ if __name__ == '__main__':
 #     vol5, inv5 = get_vol_and_inv_fix(fix5)
 #     vol6, inv6 = get_vol_and_inv_fix(fix6)
 #     vol7, inv7 = get_vol_and_inv_fix(fix7)
-#     
+#      
 #     x = np.arange(1, 15)
 #     invVol = []
 #     invVol.append(len(vol1))
@@ -127,856 +127,888 @@ if __name__ == '__main__':
 #     invVol.append(len(inv6))
 #     invVol.append(len(vol7))
 #     invVol.append(len(inv7))
-#     
+     
 #     plt.figure()
 #     plt.bar(x, invVol, width = .4, color = colors)
 #     plt.show()
+#      
 #     
-    
-#     times = get_origami_steps_time('p02', 'o1')
-#     step1 = get_points( get_fixations( 'p02' ), get_sec(times[0]), get_sec(times[1]) )
-#     step2 = get_points( get_fixations( 'p02' ), get_sec(times[1]), get_sec(times[2]) )
-#     step3= get_points( get_fixations( 'p02' ), get_sec(times[2]), get_sec(times[3]) )
-#     step4= get_points( get_fixations( 'p02' ), get_sec(times[3]), get_sec(times[4]) )
-#     step5= get_points( get_fixations( 'p02' ), get_sec(times[4]), get_sec(times[5]) )
-#     step6= get_points( get_fixations( 'p02' ), get_sec(times[5]), get_sec(times[6]) )
-#     step7= get_points( get_fixations( 'p02' ), get_sec(times[6]), get_sec(times[7]) )
-#     step8= get_points( get_fixations( 'p02' ), get_sec(times[7]), get_sec(times[8]) )
-#     step9= get_points( get_fixations( 'p02' ), get_sec(times[8]), get_sec(times[9]) )
-#     step10= get_points( get_fixations( 'p02' ), get_sec(times[9]), get_sec(times[10]) )
-#     
-#     stepv1, stepi1 = get_vol_and_inv_fix(step1)
-#     stepv2, stepi2 = get_vol_and_inv_fix(step2)
-#     stepv3, stepi3 = get_vol_and_inv_fix(step3)
-#     stepv4, stepi4 = get_vol_and_inv_fix(step4)
-#     stepv5, stepi5 = get_vol_and_inv_fix(step5)
-#     stepv6, stepi6 = get_vol_and_inv_fix(step6)
-#     stepv7, stepi7 = get_vol_and_inv_fix(step7)
-#     stepv8, stepi8 = get_vol_and_inv_fix(step8)
-#     stepv9, stepi9 = get_vol_and_inv_fix(step9)
-#     stepv10, stepi10 = get_vol_and_inv_fix(step10)
-#     
-#     o1, o2, o3 = [], [], []
-#     print 'o1'
-#     i = 0
-#     o1.append ((float(stepv1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #   o1.append ((float(stepi1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o1.append (float((stepv2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #   o1.append ((float(stepi2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o1.append ((float(stepv3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #   o1.append ((float(stepi3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o1.append ((float(stepv4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #   o1.append ((float(stepi4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o1.append ((float(stepv5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #   o1.append ((float(stepi5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o1.append ((float(stepv6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #   o1.append ((float(stepi6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o1.append ((float(stepv7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o1.append ((float(stepi7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o1.append ((float(stepv8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o1.append ((float(stepi8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o1.append ((float(stepv9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o1.append ((float(stepi9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o1.append ((float(stepv10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o1.append ((float(stepi10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i = 0
-#     with io.FileIO("Stepsp2VoluntarypSeco1.txt", "w") as file:
-#         str1 = " ".join(str(x) for x in o1)
-#         file.write(str1)
-#         
-# #     plt.figure()
-# #     x = np.arange(1, len(o1) + 1)
-# #     plt.bar(x, o1, width = .4, color = colors)
-# #     plt.title('Origami 1 p02 Voluntary and Involuntary Fix p Sec each step')
-# #     
-# #     hS, eS = difficulty(o1)
-# #     print 'step %d was hard and step %d was easy' % (hS, eS)
-# #     
-# #     print np.mean(o1)
-#     
-# #     labels = np.arange(1, 11)
-# #     lbels = []
-# #     for item in labels:
-# #         lbels.append(str(item))
-# #  
-# #     plt.figure()
-# #     plt.hist((step1[:, 1], step2[:, 1], step3[:, 1], step4[:, 1], step5[:, 1], step6[:, 1], step7[:, 1], step8[:, 1], step9[:, 1], step10[:, 1]), label = lbels, normed = True)
-# #     plt.legend()
-#     
-#     times = get_origami_steps_time('p02', 'o2')
-#     step1 = get_points( get_fixations( 'p02' ), get_sec(times[0]), get_sec(times[1]) )
-#     step2 = get_points( get_fixations( 'p02' ), get_sec(times[1]), get_sec(times[2]) )
-#     step3= get_points( get_fixations( 'p02' ), get_sec(times[2]), get_sec(times[3]) )
-#     step4= get_points( get_fixations( 'p02' ), get_sec(times[3]), get_sec(times[4]) )
-#     step5= get_points( get_fixations( 'p02' ), get_sec(times[4]), get_sec(times[5]) )
-#     step6= get_points( get_fixations( 'p02' ), get_sec(times[5]), get_sec(times[6]) )
-#     step7= get_points( get_fixations( 'p02' ), get_sec(times[6]), get_sec(times[7]) )
-#     step8= get_points( get_fixations( 'p02' ), get_sec(times[7]), get_sec(times[8]) )
-#     step9= get_points( get_fixations( 'p02' ), get_sec(times[8]), get_sec(times[9]) )
-#     step10= get_points( get_fixations( 'p02' ), get_sec(times[9]), get_sec(times[10]) )
-#     step11= get_points( get_fixations( 'p02' ), get_sec(times[10]), get_sec(times[11]) )
-#     step12= get_points( get_fixations( 'p02' ), get_sec(times[11]), get_sec(times[12]) )
-#     step13= get_points( get_fixations( 'p02' ), get_sec(times[12]), get_sec(times[13]) )
-#     step14= get_points( get_fixations( 'p02' ), get_sec(times[13]), get_sec(times[14]) )
-#     step15= get_points( get_fixations( 'p02' ), get_sec(times[14]), get_sec(times[15]) )
-#     
-#     stepv1, stepi1 = get_vol_and_inv_fix(step1)
-#     stepv2, stepi2 = get_vol_and_inv_fix(step2)
-#     stepv3, stepi3 = get_vol_and_inv_fix(step3)
-#     stepv4, stepi4 = get_vol_and_inv_fix(step4)
-#     stepv5, stepi5 = get_vol_and_inv_fix(step5)
-#     stepv6, stepi6 = get_vol_and_inv_fix(step6)
-#     stepv7, stepi7 = get_vol_and_inv_fix(step7)
-#     stepv8, stepi8 = get_vol_and_inv_fix(step8)
-#     stepv9, stepi9 = get_vol_and_inv_fix(step9)
-#     stepv10, stepi10 = get_vol_and_inv_fix(step10)
-#     stepv11, stepi11 = get_vol_and_inv_fix(step11)
-#     stepv12, stepi12 = get_vol_and_inv_fix(step12)
-#     stepv13, stepi13 = get_vol_and_inv_fix(step13)
-#     stepv14, stepi14 = get_vol_and_inv_fix(step14)
-#     stepv15, stepi15 = get_vol_and_inv_fix(step15)
-#     
-#     print 'o2'
-#     i = 0
-#     o2.append ((float(stepv1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append (float((stepv2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #   o2.append ((float(stepi6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv11)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi11)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv12)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi12)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv13)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi13)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv14)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi14)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o2.append ((float(stepv15)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o2.append ((float(stepi15)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i = 0
-#     with io.FileIO("Stepsp2VoluntarypSeco2.txt", "w") as file:
-#         str2 = " ".join(str(x) for x in o2)
-#         file.write(str2)     
-# #     plt.figure()
-# #     x = np.arange(1, len(o2) + 1)
-# #     plt.bar(x, o2, width = .4, color = colors)
-# #     plt.title('Origami 2 p02 Voluntary and Involuntary Fix p Sec each step')
-# #     
-# #     print np.mean(o2)
-# #     
-# #     hS, eS = difficulty(o2)
-# #     print 'step %d was hard and step %d was easy' % (hS, eS)
-# #     
-# #     labels = np.arange(1, 16)
-# #     lbels = []
-# #     for item in labels:
-# #         lbels.append(str(item))
-# #  
-# #     plt.figure()
-# #     plt.hist((step1[:, 1], step2[:, 1], step3[:, 1], step4[:, 1], step5[:, 1], step6[:, 1], step7[:, 1], step8[:, 1], step9[:, 1], step10[:, 1], step11[:, 1], step12[:, 1], step13[:, 1], step14[:, 1], step15[:, 1]), label = lbels, normed = True)
-# #     plt.legend()
-# #     
-#     
-#     times = get_origami_steps_time('p02', 'o3')
-#     step1 = get_points( get_fixations( 'p02' ), get_sec(times[0]), get_sec(times[1]) )
-#     step2 = get_points( get_fixations( 'p02' ), get_sec(times[1]), get_sec(times[2]) )
-#     step3= get_points( get_fixations( 'p02' ), get_sec(times[2]), get_sec(times[3]) )
-#     step4= get_points( get_fixations( 'p02' ), get_sec(times[3]), get_sec(times[4]) )
-#     step5= get_points( get_fixations( 'p02' ), get_sec(times[4]), get_sec(times[5]) )
-#     step6= get_points( get_fixations( 'p02' ), get_sec(times[5]), get_sec(times[6]) )
-#     step7= get_points( get_fixations( 'p02' ), get_sec(times[6]), get_sec(times[7]) )
-#     step8= get_points( get_fixations( 'p02' ), get_sec(times[7]), get_sec(times[8]) )
-#     step9= get_points( get_fixations( 'p02' ), get_sec(times[8]), get_sec(times[9]) )
-#     step10= get_points( get_fixations( 'p02' ), get_sec(times[9]), get_sec(times[10]) )
-#     step11= get_points( get_fixations( 'p02' ), get_sec(times[10]), get_sec(times[11]) )
-#     step12= get_points( get_fixations( 'p02' ), get_sec(times[11]), get_sec(times[12]) )
-#     step13= get_points( get_fixations( 'p02' ), get_sec(times[12]), get_sec(times[13]) )
-#     step14= get_points( get_fixations( 'p02' ), get_sec(times[13]), get_sec(times[14]) )
-#     step15= get_points( get_fixations( 'p02' ), get_sec(times[14]), get_sec(times[15]) )
-#     step16= get_points( get_fixations( 'p02' ), get_sec(times[15]), get_sec(times[16]) )
-#     step17= get_points( get_fixations( 'p02' ), get_sec(times[16]), get_sec(times[17]) )
-#     step18= get_points( get_fixations( 'p02' ), get_sec(times[17]), get_sec(times[18]) )
-#     step19= get_points( get_fixations( 'p02' ), get_sec(times[18]), get_sec(times[19]) )
-#     step20= get_points( get_fixations( 'p02' ), get_sec(times[19]), get_sec(times[20]) )
-#     step21= get_points( get_fixations( 'p02' ), get_sec(times[20]), get_sec(times[21]) )
-#     step22= get_points( get_fixations( 'p02' ), get_sec(times[21]), get_sec(times[22]) )
-#     step23= get_points( get_fixations( 'p02' ), get_sec(times[22]), get_sec(times[23]) )
-#     step24= get_points( get_fixations( 'p02' ), get_sec(times[23]), get_sec(times[24]) )
-#     step25= get_points( get_fixations( 'p02' ), get_sec(times[24]), get_sec(times[25]) )
-#     step26= get_points( get_fixations( 'p02' ), get_sec(times[25]), get_sec(times[26]) )
-#     step27= get_points( get_fixations( 'p02' ), get_sec(times[26]), get_sec(times[27]) )
-#     
-#     stepv1, stepi1 = get_vol_and_inv_fix(step1)
-#     stepv2, stepi2 = get_vol_and_inv_fix(step2)
-#     stepv3, stepi3 = get_vol_and_inv_fix(step3)
-#     stepv4, stepi4 = get_vol_and_inv_fix(step4)
-#     stepv5, stepi5 = get_vol_and_inv_fix(step5)
-#     stepv6, stepi6 = get_vol_and_inv_fix(step6)
-#     stepv7, stepi7 = get_vol_and_inv_fix(step7)
-#     stepv8, stepi8 = get_vol_and_inv_fix(step8)
-#     stepv9, stepi9 = get_vol_and_inv_fix(step9)
-#     stepv10, stepi10 = get_vol_and_inv_fix(step10)
-#     stepv11, stepi11 = get_vol_and_inv_fix(step11)
-#     stepv12, stepi12 = get_vol_and_inv_fix(step12)
-#     stepv13, stepi13 = get_vol_and_inv_fix(step13)
-#     stepv14, stepi14 = get_vol_and_inv_fix(step14)
-#     stepv15, stepi15 = get_vol_and_inv_fix(step15)
-#     stepv16, stepi16 = get_vol_and_inv_fix(step16)
-#     stepv17, stepi17 = get_vol_and_inv_fix(step17)
-#     stepv18, stepi18 = get_vol_and_inv_fix(step18)
-#     stepv19, stepi19 = get_vol_and_inv_fix(step19)
-#     stepv20, stepi20 = get_vol_and_inv_fix(step20)
-#     stepv21, stepi21 = get_vol_and_inv_fix(step21)
-#     stepv22, stepi22 = get_vol_and_inv_fix(step22)
-#     stepv23, stepi23 = get_vol_and_inv_fix(step23)
-#     stepv24, stepi24 = get_vol_and_inv_fix(step24)
-#     stepv25, stepi25 = get_vol_and_inv_fix(step25)
-#     stepv26, stepi26 = get_vol_and_inv_fix(step26)
-#     stepv27, stepi27 = get_vol_and_inv_fix(step27)
-#     
-#     print 'o3'
-#     i = 0
-#     o3.append ((float(stepv1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append (float((stepv2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv11)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi11)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv12)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi12)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv13)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi13)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv14)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi14)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv15)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi15)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv16)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi16)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv17)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi17)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv18)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi18)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv19)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi19)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv20)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi20)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv21)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi21)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv22)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi22)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv23)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #   o3.append ((float(stepi23)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv24)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi24)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv25)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi25)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv26)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi26)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i += 1
-#     o3.append ((float(stepv27)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-# #    o3.append ((float(stepi27)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
-#     i = 0
-#     with io.FileIO("Stepsp2VoluntarypSeco3.txt", "w") as file:
-#         str3 = " ".join(str(x) for x in o3)
-#         file.write(str3)
+    times = get_origami_steps_time('p02', 'o1')
+    times[0] = '00:00:48'
+    print times
+    i = 0
+    times2 = []
+    for item in times:
+        if ((i%2) == 0):
+            times2.append(times[i])
+        i += 1
+    times = times2
+    print times2
+    step1 = get_points( get_fixations( 'p02' ), get_sec(times[0]), get_sec(times[1]) )
+    step2 = get_points( get_fixations( 'p02' ), get_sec(times[1]), get_sec(times[2]) )
+    step3= get_points( get_fixations( 'p02' ), get_sec(times[2]), get_sec(times[3]) )
+    step4= get_points( get_fixations( 'p02' ), get_sec(times[3]), get_sec(times[4]) )
+    step5= get_points( get_fixations( 'p02' ), get_sec(times[4]), get_sec(times[5]) )
+    step6= get_points( get_fixations( 'p02' ), get_sec(times[5]), get_sec(times[6]) )
+    step7= get_points( get_fixations( 'p02' ), get_sec(times[6]), get_sec(times[7]) )
+    step8= get_points( get_fixations( 'p02' ), get_sec(times[7]), get_sec(times[8]) )
+    step9= get_points( get_fixations( 'p02' ), get_sec(times[8]), get_sec(times[9]) )
+    step10= get_points( get_fixations( 'p02' ), get_sec(times[9]), get_sec(times[10]) )
+     
+    stepv1, stepi1 = get_vol_and_inv_fix(step1)
+    stepv2, stepi2 = get_vol_and_inv_fix(step2)
+    stepv3, stepi3 = get_vol_and_inv_fix(step3)
+    stepv4, stepi4 = get_vol_and_inv_fix(step4)
+    stepv5, stepi5 = get_vol_and_inv_fix(step5)
+    stepv6, stepi6 = get_vol_and_inv_fix(step6)
+    stepv7, stepi7 = get_vol_and_inv_fix(step7)
+    stepv8, stepi8 = get_vol_and_inv_fix(step8)
+    stepv9, stepi9 = get_vol_and_inv_fix(step9)
+    stepv10, stepi10 = get_vol_and_inv_fix(step10)
+     
+    o1, o2, o3 = [], [], []
+    print 'o1'
+    i = 0
+    o1.append ((float(stepv1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append (float((stepv2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(stepv3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(stepv4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(stepv5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(stepv6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o1.append ((float(stepi6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(stepv7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o1.append ((float(stepi7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(stepv8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o1.append ((float(stepi8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(stepv9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o1.append ((float(stepi9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o1.append ((float(stepv10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o1.append ((float(stepi10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i = 0
+    with io.FileIO("Stepsp2VoluntarypSeco1.txt", "w") as file:
+        str1 = " ".join(str(x) for x in o1)
+        file.write(str1)
+         
 #     plt.figure()
-#     x = np.arange(1, len(o3) + 1)
-#     plt.bar(x, o3, width = .4, color = colors)
-#     plt.title('Origami 3 p02 Voluntary and Involuntary Fix p Sec each step')
+#     x = np.arange(1, len(o1) + 1)
+#     plt.bar(x, o1, width = .4, color = colors)
+#     plt.title('Origami 1 p02 Voluntary and Involuntary Fix p Sec each step')
 #     
-#     print np.mean(o3)
-#     
-#     hS, eS = difficulty(o3)
+#     hS, eS = difficulty(o1)
 #     print 'step %d was hard and step %d was easy' % (hS, eS)
 #     
-#     labels = np.arange(1, 28)
+#     print np.mean(o1)
+     
+#     labels = np.arange(1, 11)
 #     lbels = []
 #     for item in labels:
 #         lbels.append(str(item))
-#   
+#  
 #     plt.figure()
-#     plt.hist((step1[:, 1], step2[:, 1], step3[:, 1], step4[:, 1], step5[:, 1], step6[:, 1], step7[:, 1], step8[:, 1], step9[:, 1], step10[:, 1], step11[:, 1], step12[:, 1], step13[:, 1], step14[:, 1], step15[:, 1], step16[:, 1], step17[:, 1], step18[:, 1], step19[:, 1], step20[:, 1], step21[:, 1], step22[:, 1], step23[:, 1], step24[:, 1], step25[:, 1], step26[:, 1], step27[:, 1]), label = lbels, normed = True)
+#     plt.hist((step1[:, 1], step2[:, 1], step3[:, 1], step4[:, 1], step5[:, 1], step6[:, 1], step7[:, 1], step8[:, 1], step9[:, 1], step10[:, 1]), label = lbels, normed = True)
 #     plt.legend()
-#     plt.show()
-#        
-    p01[0][0] = "00:00:32"
-    print p01
-    origami11 = get_points( get_fixations( 'p01' ), get_sec(p01[0, 0]), get_sec(p01[0, 1]) )
-    origami21 = get_points( get_fixations( 'p02' ), get_sec(p02[0, 0]), get_sec(p02[0, 1]) )
-    origami31 = get_points( get_fixations( 'p03' ), get_sec(p03[0, 0]), get_sec(p03[0, 1]) )
-    origami41 = get_points( get_fixations( 'p04' ), get_sec(p04[0, 0]), get_sec(p04[0, 1]) )
-    origami51 = get_points( get_fixations( 'p05' ), get_sec(p05[0, 0]), get_sec(p05[0, 1]) )
-    origami61 = get_points( get_fixations( 'p06' ), get_sec(p06[0, 0]), get_sec(p06[0, 1]) )
-#    origami71 = get_points( get_fixations( 'p07' ), get_sec(p07[0, 2]), get_sec(p07[0, 3]) )
      
-    origami12 = get_points( get_fixations( 'p01' ), get_sec(p01[1, 0]), get_sec(p01[1, 1]) )
-    origami22 = get_points( get_fixations( 'p02' ), get_sec(p02[1, 0]), get_sec(p02[1, 1]) )
-    origami32 = get_points( get_fixations( 'p03' ), get_sec(p03[1, 0]), get_sec(p03[1, 1]) )
-    origami42 = get_points( get_fixations( 'p04' ), get_sec(p04[1, 0]), get_sec(p04[1, 1]))
-    origami52 = get_points( get_fixations( 'p05' ), get_sec(p05[1, 0]), get_sec(p05[1, 1]) )
-    origami62 = get_points( get_fixations( 'p06' ), get_sec(p06[1, 0]), get_sec(p06[1, 1]) )
-#    origami72 = get_points( get_fixations( 'p07' ), get_sec(p07[1, 2]), get_sec(p07[1, 3]) )
+    times = get_origami_steps_time('p02', 'o2')
+    print times
+    times[0] = '00:05:02'
+    print times
+    i = 0
+    times2 = []
+    for item in times:
+        if (times[i] != '\r\n'):
+            times2.append(times[i])
+        i += 1
+    times = times2
+    print times2
+    step1 = get_points( get_fixations( 'p02' ), get_sec(times[0]), get_sec(times[1]) )
+    step2 = get_points( get_fixations( 'p02' ), get_sec(times[1]), get_sec(times[2]) )
+    step3= get_points( get_fixations( 'p02' ), get_sec(times[2]), get_sec(times[3]) )
+    step4= get_points( get_fixations( 'p02' ), get_sec(times[3]), get_sec(times[4]) )
+    step5= get_points( get_fixations( 'p02' ), get_sec(times[4]), get_sec(times[5]) )
+    step6= get_points( get_fixations( 'p02' ), get_sec(times[5]), get_sec(times[6]) )
+    step7= get_points( get_fixations( 'p02' ), get_sec(times[6]), get_sec(times[7]) )
+    step8= get_points( get_fixations( 'p02' ), get_sec(times[7]), get_sec(times[8]) )
+    step9= get_points( get_fixations( 'p02' ), get_sec(times[8]), get_sec(times[9]) )
+    step10= get_points( get_fixations( 'p02' ), get_sec(times[9]), get_sec(times[10]) )
+    step11= get_points( get_fixations( 'p02' ), get_sec(times[10]), get_sec(times[11]) )
+    step12= get_points( get_fixations( 'p02' ), get_sec(times[11]), get_sec(times[12]) )
+    step13= get_points( get_fixations( 'p02' ), get_sec(times[12]), get_sec(times[13]) )
+    step14= get_points( get_fixations( 'p02' ), get_sec(times[13]), get_sec(times[14]) )
+    step15= get_points( get_fixations( 'p02' ), get_sec(times[14]), get_sec(times[15]) )
      
-    origami13 = get_points( get_fixations( 'p01' ), get_sec(p01[2, 0]), get_sec(p01[2, 1]) )
-    origami23 = get_points( get_fixations( 'p02' ), get_sec(p02[2, 0]), get_sec(p02[2, 1]) )
-    origami33 = get_points( get_fixations( 'p03' ), get_sec(p03[2, 0]), get_sec(p03[2, 1]) )
-    origami43 = get_points( get_fixations( 'p04' ), get_sec(p04[2, 0]), get_sec(p04[2, 1]) )
-    origami53 = get_points( get_fixations( 'p05' ), get_sec(p05[2, 0]), get_sec(p05[2, 1]) )
-    origami63 = get_points( get_fixations( 'p06' ), get_sec(p06[2, 0]), get_sec(p06[2, 1]) )
-#    origami73 = get_points( get_fixations( 'p07' ), get_sec(p07[2, 2]), get_sec(p07[2, 3]) )
+    stepv1, stepi1 = get_vol_and_inv_fix(step1)
+    stepv2, stepi2 = get_vol_and_inv_fix(step2)
+    stepv3, stepi3 = get_vol_and_inv_fix(step3)
+    stepv4, stepi4 = get_vol_and_inv_fix(step4)
+    stepv5, stepi5 = get_vol_and_inv_fix(step5)
+    stepv6, stepi6 = get_vol_and_inv_fix(step6)
+    stepv7, stepi7 = get_vol_and_inv_fix(step7)
+    stepv8, stepi8 = get_vol_and_inv_fix(step8)
+    stepv9, stepi9 = get_vol_and_inv_fix(step9)
+    stepv10, stepi10 = get_vol_and_inv_fix(step10)
+    stepv11, stepi11 = get_vol_and_inv_fix(step11)
+    stepv12, stepi12 = get_vol_and_inv_fix(step12)
+    stepv13, stepi13 = get_vol_and_inv_fix(step13)
+    stepv14, stepi14 = get_vol_and_inv_fix(step14)
+    stepv15, stepi15 = get_vol_and_inv_fix(step15)
      
-    vol11, inv11 = get_vol_and_inv_fix( origami11 )
-    vol21, inv21 = get_vol_and_inv_fix( origami21 )
-    vol31, inv31 = get_vol_and_inv_fix( origami31 )
-    vol41, inv41 = get_vol_and_inv_fix( origami41 )
-    vol51, inv51 = get_vol_and_inv_fix( origami51 )
-    vol61, inv61 = get_vol_and_inv_fix( origami61 )
-#    vol71, inv71 = get_vol_and_inv_fix( origami71 )
-     
-    invVol1 = [vol11, inv11, vol21, inv21, vol31, inv31, vol41, inv41, vol51, inv51, vol61, inv61]
-     
-    vol12, inv12 = get_vol_and_inv_fix( origami12 )
-    vol22, inv22 = get_vol_and_inv_fix( origami22 )
-    vol32, inv32 = get_vol_and_inv_fix( origami32 )
-    vol42, inv42 = get_vol_and_inv_fix( origami42 )
-    vol52, inv52 = get_vol_and_inv_fix( origami52 )
-    vol62, inv62 = get_vol_and_inv_fix( origami62 )
-#    vol72, inv72 = get_vol_and_inv_fix( origami72 )
-     
-    invVol2 = [vol12, inv12, vol22, inv22, vol32, inv32, vol42, inv42, vol52, inv52, vol62, inv62]
-     
-    vol13, inv13 = get_vol_and_inv_fix( origami13 )
-    vol23, inv23 = get_vol_and_inv_fix( origami23 )
-    vol33, inv33 = get_vol_and_inv_fix( origami33 )
-    vol43, inv43 = get_vol_and_inv_fix( origami43 )
-    vol53, inv53 = get_vol_and_inv_fix( origami53 )
-    vol63, inv63 = get_vol_and_inv_fix( origami63 )
-#    vol73, inv73 = get_vol_and_inv_fix( origami73 )
-     
-    invVol3 = [vol13, inv13, vol23, inv23, vol33, inv33, vol43, inv43, vol53, inv53, vol63, inv63]
- 
-#     x = np.arange(1, 15)
+    print 'o2'
+    i = 0
+    o2.append ((float(stepv1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append (float((stepv2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o2.append ((float(stepi6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv11)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi11)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv12)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi12)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv13)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi13)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv14)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi14)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o2.append ((float(stepv15)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o2.append ((float(stepi15)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i = 0
+    with io.FileIO("Stepsp2VoluntarypSeco2.txt", "w") as file:
+        str2 = " ".join(str(x) for x in o2)
+        file.write(str2)     
 #     plt.figure()
-#     plt.bar(x, invVol1, width = .4, color = colors)
-#     plt.title('O1 Vol Inv Fixations for each person')
-#     plt.figure()
-#     plt.bar(x, invVol2, width = .4, color = colors)
-#     plt.title('O2 Vol Inv Fixations for each person')
-#     plt.figure()
-#     plt.bar(x, invVol3, width = .4, color = colors)
-#     plt.title('O3 Vol Inv Fixations for each person')
-#     plt.show()
-#    
-#     numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
-#     x = np.arange(1, 4)
-#     for i in range(len(invVol1)):
-#         plt.figure()
-#         plt.bar(x, [invVol1[i], invVol2[i], invVol3[i]])
-#         if (i % 2) != 0:
-#             plt.title('Involuntary Fixations for O1-O3 for person %d' % (numbers[i]))
-#         else:
-#             plt.title('Voluntary Fixations for O1-O3 for person %d' % (numbers[i]))
-#         plt.show()
-#         
-#     x = np.arange(1, 7)
-#     for i in range(len(invVol1)):
-#         if i % 2 == 0:
-#             plt.figure()
-#             plt.bar(x, [invVol1[i], invVol1[i + 1], invVol2[i], invVol2[i + 1], invVol3[i], invVol3[i + 1]])
-#             plt.title('Vol and Inv Fixations for p0%d O1-O3' % (numbers[i]))
-#             plt.show()
-#     
-#     print('1')
-#     print
-#     print((len(origami11)) / (origami11[-1, 0] - origami11[0, 0]))
-#     print((len(origami21)) / (origami21[-1, 0] - origami21[0, 0]))
-#     print((len(origami31)) / (origami31[-1, 0] - origami31[0, 0]))
-#     print((len(origami41)) / (origami41[-1, 0] - origami41[0, 0]))
-#     print((len(origami51)) / (origami51[-1, 0] - origami51[0, 0]))
-#     print((len(origami61)) / (origami61[-1, 0] - origami61[0, 0]))
-#     print((len(origami71)) / (origami71[-1, 0] - origami71[0, 0]))
-#     print
-#     print('2')
-#     print
-#     print((len(origami12)) / (origami12[-1, 0] - origami12[0, 0]))
-#     print((len(origami22)) / (origami22[-1, 0] - origami22[0, 0]))
-#     print((len(origami32)) / (origami32[-1, 0] - origami32[0, 0]))
-#     print((len(origami42)) / (origami42[-1, 0] - origami42[0, 0]))
-#     print((len(origami52)) / (origami52[-1, 0] - origami52[0, 0]))
-#     print((len(origami62)) / (origami62[-1, 0] - origami62[0, 0]))
-#     print((len(origami72)) / (origami72[-1, 0] - origami72[0, 0]))
-#     print
-#     print('3')
-#     print
-#     print((len(origami13)) / (origami13[-1, 0] - origami13[0, 0]))
-#     print((len(origami23)) / (origami23[-1, 0] - origami23[0, 0]))
-#     print((len(origami33)) / (origami33[-1, 0] - origami33[0, 0]))
-#     print((len(origami43)) / (origami43[-1, 0] - origami43[0, 0]))
-#     print((len(origami53)) / (origami53[-1, 0] - origami53[0, 0]))
-#     print((len(origami63)) / (origami63[-1, 0] - origami63[0, 0]))
-#     print((len(origami73)) / (origami73[-1, 0] - origami73[0, 0]))
-     
-#    x = np.arange(1, 8)
-    print origami11
-    length11 = vol11 / (origami11[len(origami11)-1, 0] - origami11[0, 0])
-    length21 = vol21 / (origami21[-1, 0] - origami21[0, 0])
-    length31 = vol31 / (origami31[-1, 0] - origami31[0, 0])
-    length41 = vol41 / (origami41[-1, 0] - origami41[0, 0])
-    length51 = vol51 / (origami51[-1, 0] - origami51[0, 0])
-    length61 = vol61 / (origami61[-1, 0] - origami61[0, 0])
-#   length71 = vol71 / (origami71[-1, 0] - origami71[0, 0])
-     
-    o1 = [length11]
-    o2 = [length21]
-    o3 = [length31]
-    o4 = [length41]
-    o5 = [length51]
-    o6 = [length61]
-#    o7 = [length71]
-    with io.FileIO("C:\Users\mma_v\Documents\VolFixpPersonpSeco1.txt", "w") as file:
-        file.write(str(length11))
-        file.write(str(length21))
-        file.write(str(length31))
-        file.write(str(length41))
-        file.write(str(length51))
-        file.write(str(length61))
-        
-#     plt.figure()
-#     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
-#     plt.title('Origami 01 Voluntary Fixations per Second per Person')
-#      
-    length11 = inv11 / (origami11[-1, 0] - origami11[0, 0])
-    length21 = inv21 / (origami21[-1, 0] - origami21[0, 0])
-    length31 = inv31 / (origami31[-1, 0] - origami31[0, 0])
-    length41 = inv41 / (origami41[-1, 0] - origami41[0, 0])
-    length51 = inv51 / (origami51[-1, 0] - origami51[0, 0])
-    length61 = inv61 / (origami61[-1, 0] - origami61[0, 0])
-#   length71 = inv71 / (origami71[-1, 0] - origami71[0, 0])
-     
-    o1.append(length11)
-    o2.append(length21)
-    o3.append(length31)
-    o4.append(length41)
-    o5.append(length51)
-    o6.append(length61)
-#   o7.append(length71)
-    with io.FileIO("C:\Users\mma_v\Documents\InVolFixpPersonpSeco1.txt", "w") as file:
-        file.write(str(length11))
-        file.write(str(length21))
-        file.write(str(length31))
-        file.write(str(length41))
-        file.write(str(length51))
-        file.write(str(length61))
-        
-#     plt.figure()
-#     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
-#     plt.title('Origami 01 Involuntary Fixations per Second per Person')
-#      
-     
-    length11 = vol12 / (origami12[-1, 0] - origami12[0, 0])
-    length21 = vol22 / (origami22[-1, 0] - origami22[0, 0])
-    length31 = vol32 / (origami32[-1, 0] - origami32[0, 0])
-    length41 = vol42 / (origami42[-1, 0] - origami42[0, 0])
-    length51 = vol52 / (origami52[-1, 0] - origami52[0, 0])
-    length61 = vol62 / (origami62[-1, 0] - origami62[0, 0])
-#    length71 = vol72 / (origami72[-1, 0] - origami72[0, 0])
-     
-    o1.append(length11)
-    o2.append(length21)
-    o3.append(length31)
-    o4.append(length41)
-    o5.append(length51)
-    o6.append(length61)
-#    o7.append(length71)
-
-    with io.FileIO("C:\Users\mma_v\Documents\VolFixpPersonpSeco2.txt", "w") as file:
-        file.write(str(length11))
-        file.write(str(length21))
-        file.write(str(length31))
-        file.write(str(length41))
-        file.write(str(length51))
-        file.write(str(length61))
-         
-#     plt.figure()
-#     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
-#     plt.title('Origami 02 Voluntary Fixations per Second per Person')
-#      
-    length11 = inv12 / (origami12[-1, 0] - origami12[0, 0])
-    length21 = inv22 / (origami22[-1, 0] - origami22[0, 0])
-    length31 = inv32 / (origami32[-1, 0] - origami32[0, 0])
-    length41 = inv42 / (origami42[-1, 0] - origami42[0, 0])
-    length51 = inv52 / (origami52[-1, 0] - origami52[0, 0])
-    length61 = inv62 / (origami62[-1, 0] - origami62[0, 0])
-#    length71 = inv72 / (origami72[-1, 0] - origami72[0, 0])
-     
-    o1.append(length11)
-    o2.append(length21)
-    o3.append(length31)
-    o4.append(length41)
-    o5.append(length51)
-    o6.append(length61)
-#    o7.append(length71)
-    with io.FileIO("C:\Users\mma_v\Documents\InvVolFixpPersonpSeco2.txt", "w") as file:
-        file.write(str(length11))
-        file.write(str(length21))
-        file.write(str(length31))
-        file.write(str(length41))
-        file.write(str(length51))
-        file.write(str(length61))
-         
-#     plt.figure()
-#     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
-#     plt.title('Origami 02 Involuntary Fixations per Second per Person')
-#     
-    length11 = vol13 / (origami13[-1, 0] - origami13[0, 0])
-    length21 = vol23 / (origami23[-1, 0] - origami23[0, 0])
-    length31 = vol33 / (origami33[-1, 0] - origami33[0, 0])
-    length41 = vol43 / (origami43[-1, 0] - origami43[0, 0])
-    length51 = vol53 / (origami53[-1, 0] - origami53[0, 0])
-    length61 = vol63 / (origami63[-1, 0] - origami63[0, 0])
-#    length71 = vol73 / (origami73[-1, 0] - origami73[0, 0])
-     
-    o1.append(length11)
-    o2.append(length21)
-    o3.append(length31)
-    o4.append(length41)
-    o5.append(length51)
-    o6.append(length61)
-#    o7.append(length71)
-    with io.FileIO("C:\Users\mma_v\Documents\VolFixpPersonpSeco3.txt", "w") as file:
-        file.write(str(length11))
-        file.write(str(length21))
-        file.write(str(length31))
-        file.write(str(length41))
-        file.write(str(length51))
-        file.write(str(length61))
-         
-#     plt.figure()
-#     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
-#     plt.title('Origami 03 Voluntary Fixations per Second per Person')
-#      
-    length11 = inv13 / (origami13[-1, 0] - origami13[0, 0])
-    length21 = inv23 / (origami23[-1, 0] - origami23[0, 0])
-    length31 = inv33 / (origami33[-1, 0] - origami33[0, 0])
-    length41 = inv43 / (origami43[-1, 0] - origami43[0, 0])
-    length51 = inv53 / (origami53[-1, 0] - origami53[0, 0])
-    length61 = inv63 / (origami63[-1, 0] - origami63[0, 0])
-#    length71 = inv73 / (origami73[-1, 0] - origami73[0, 0])
-     
-    o1.append(length11)
-    o2.append(length21)
-    o3.append(length31)
-    o4.append(length41)
-    o5.append(length51)
-    o6.append(length61)
-#    o7.append(length71)
-    with io.FileIO("C:\Users\mma_v\Documents\InvVolFixpPersonpSeco3.txt", "w") as file:
-        file.write(str(length11))
-        file.write(str(length21))
-        file.write(str(length31))
-        file.write(str(length41))
-        file.write(str(length51))
-        file.write(str(length61))
-        
-    with io.FileIO("C:\Users\mma_v\Documents\VolInvFixpPersonpSec.txt", "w") as file:
-        str11 = " ".join(str(x) for x in o1)
-        file.write(str11)
-        str21 = " ".join(str(x) for x in o2)
-        file.write(str21)
-        str31 = " ".join(str(x) for x in o3)
-        file.write(str31)
-        str41 = " ".join(str(x) for x in o4)
-        file.write(str41)
-        str51 = " ".join(str(x) for x in o5)
-        file.write(str51)
-        str61 = " ".join(str(x) for x in o6)
-        file.write(str61)
-             
-#     plt.figure()
-#     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
-#     plt.title('Origami 03 Involuntary Fixations per Second per Person')
-#      
-#    plt.show()
-     
-#     x = np.arange(1, 7)
-#      
-#     plt.figure()
-#     plt.bar(x, o1, width = .4, color = colors)
-#     plt.title('Person 01 Voluntary and Involuntary Fixations per Second')
-#      
-#     plt.figure()
+#     x = np.arange(1, len(o2) + 1)
 #     plt.bar(x, o2, width = .4, color = colors)
-#     plt.title('Person 02 Voluntary and Involuntary Fixations per Second')
-#      
+#     plt.title('Origami 2 p02 Voluntary and Involuntary Fix p Sec each step')
+#     
+#     print np.mean(o2)
+#     
+#     hS, eS = difficulty(o2)
+#     print 'step %d was hard and step %d was easy' % (hS, eS)
+#     
+#     labels = np.arange(1, 16)
+#     lbels = []
+#     for item in labels:
+#         lbels.append(str(item))
+#  
 #     plt.figure()
-#     plt.bar(x, o3, width = .4, color = colors)
-#     plt.title('Person 03 Voluntary and Involuntary Fixations per Second')
-#      
-#     plt.figure()
-#     plt.bar(x, o4, width = .4, color = colors)
-#     plt.title('Person 04 Voluntary and Involuntary Fixations per Second')
-#      
-#     plt.figure()
-#     plt.bar(x, o5, width = .4, color = colors)
-#     plt.title('Person 05 Voluntary and Involuntary Fixations per Second')
-#      
-#     plt.figure()
-#     plt.bar(x, o6, width = .4, color = colors)
-#     plt.title('Person 06 Voluntary and Involuntary Fixations per Second')
-#      
-#     plt.figure()
-#     plt.bar(x, o7, width = .4, color = colors)
-#     plt.title('Person 07 Voluntary and Involuntary Fixations per Second')
-#      
-#     plt.show()
-#      
-#     x = [1, 2, 3, 4, 5, 6, 7]
-#      
-#    names = ('p01', 'p02', 'p03', 'p04', 'p05', 'p06', 'p07' )
+#     plt.hist((step1[:, 1], step2[:, 1], step3[:, 1], step4[:, 1], step5[:, 1], step6[:, 1], step7[:, 1], step8[:, 1], step9[:, 1], step10[:, 1], step11[:, 1], step12[:, 1], step13[:, 1], step14[:, 1], step15[:, 1]), label = lbels, normed = True)
+#     plt.legend()
+#     
      
-    length11 = ((len(origami11)) / (origami11[-1, 0] - origami11[0, 0]))
-    length21 = ((len(origami21)) / (origami21[-1, 0] - origami21[0, 0]))
-    length31 = ((len(origami31)) / (origami31[-1, 0] - origami31[0, 0]))
-    length41 = ((len(origami41)) / (origami41[-1, 0] - origami41[0, 0]))
-    length51 = ((len(origami51)) / (origami51[-1, 0] - origami51[0, 0]))
-    length61 = ((len(origami61)) / (origami61[-1, 0] - origami61[0, 0]))
-#    length71 = ((len(origami71)) / (origami71[-1, 0] - origami71[0, 0]))
-    with io.FileIO("C:\Users\mma_v\Documents\FixpPersonpSeco1.txt", "w") as file:
-        file.write(str(length11))
-        file.write(str(length21))
-        file.write(str(length31))
-        file.write(str(length41))
-        file.write(str(length51))
-        file.write(str(length61))
-#           
-#     plt.figure()
-#     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
-#     plt.title('Origami 01 Fixations per Second per Person')
-#      
-    length12 = ((len(origami12)) / (origami12[-1, 0] - origami12[0, 0]))
-    length22 = ((len(origami22)) / (origami22[-1, 0] - origami22[0, 0]))
-    length32 = ((len(origami32)) / (origami32[-1, 0] - origami32[0, 0]))
-    length42 = ((len(origami42)) / (origami42[-1, 0] - origami42[0, 0]))
-    length52 = ((len(origami52)) / (origami52[-1, 0] - origami52[0, 0]))
-    length62 = ((len(origami62)) / (origami62[-1, 0] - origami62[0, 0]))
-#    length72 = ((len(origami72)) / (origami72[-1, 0] - origami72[0, 0]))
-    with io.FileIO("C:\Users\mma_v\Documents\FixpPersonpSeco2.txt", "w") as file:
-        file.write(str(length12))
-        file.write(str(length22))
-        file.write(str(length32))
-        file.write(str(length42))
-        file.write(str(length52))
-        file.write(str(length62))
-        
-#     plt.figure()
-#     plt.bar(x, [length12, length22, length32, length42, length52, length62, length72], width = .4, color = colors )
-#     plt.title('Origami 02 Fixations per Second per Person')
-#     
-    length13 = ((len(origami13)) / (origami13[-1, 0] - origami13[0, 0]))
-    length23 = ((len(origami23)) / (origami23[-1, 0] - origami23[0, 0]))
-    length33 = ((len(origami33)) / (origami33[-1, 0] - origami33[0, 0]))
-    length43 = ((len(origami43)) / (origami43[-1, 0] - origami43[0, 0]))
-    length53 = ((len(origami53)) / (origami53[-1, 0] - origami53[0, 0]))
-    length63 = ((len(origami63)) / (origami63[-1, 0] - origami63[0, 0]))
-#    length73 = ((len(origami73)) / (origami73[-1, 0] - origami73[0, 0]))
-    with io.FileIO("C:\Users\mma_v\Documents\FixpPersonpSeco3.txt", "w") as file:
-        file.write(str(length13))
-        file.write(str(length23))
-        file.write(str(length33))
-        file.write(str(length43))
-        file.write(str(length53))
-        file.write(str(length63))
-         
-#     plt.figure()
-#     plt.bar(x, [length13, length23, length33, length43, length53, length63, length73], width = .4, color = colors)
-#     plt.title('Origami 03 Fixations per Second per Person')
-#      
-#     for i in range(len(o1)):
-#         print i
-#         print o1[i]
-#         print o2[i]
-#         print o3[i]
-#         print o4[i]
-#         print o5[i]
-#         print o6[i]
-#         print o7[i]
-#     
-# #     with io.FileIO('Mean fixation times for Origami.txt', 'w') as ofile:
-# #            
-# #         ofile.write('Mean fixation time for all \n \n')
-# #         
-# #         ofile.write('P01: \n \n')
-# #         
-# #         ofile.write('length: %f \n' % len(origami11))
-# #         ofile.write('P1 O1: %f \n' % (np.mean(origami11[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami12))
-# #         ofile.write('P1 O2: %f \n' % (np.mean(origami12[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami13))
-# #         ofile.write('P1 O3: %f \n \n' % (np.mean(origami13[:, 0])))
-# #         
-# #         ofile.write('P02: \n \n')
-# #         
-# #         ofile.write('length: %f \n' % len(origami21))
-# #         ofile.write('P2 O1: %f \n' % (np.mean(origami21[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami22))
-# #         ofile.write('P2 O2: %f \n' % (np.mean(origami22[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami23))
-# #         ofile.write('P2 O3: %f \n \n' % (np.mean(origami23[:, 0])))
+    times = get_origami_steps_time('p02', 'o3')
+    print times
+    times[0] = '00:12:32'
+    print times
+    i = 0
+    times2 = []
+    for item in times:
+        if (times[i] != '\r\n'):
+            times2.append(times[i])
+        i += 1
+    times = times2
+    print times2
+    step1 = get_points( get_fixations( 'p02' ), get_sec(times[0]), get_sec(times[1]) )
+    step2 = get_points( get_fixations( 'p02' ), get_sec(times[1]), get_sec(times[2]) )
+    step3= get_points( get_fixations( 'p02' ), get_sec(times[2]), get_sec(times[3]) )
+    step4= get_points( get_fixations( 'p02' ), get_sec(times[3]), get_sec(times[4]) )
+    step5= get_points( get_fixations( 'p02' ), get_sec(times[4]), get_sec(times[5]) )
+    step6= get_points( get_fixations( 'p02' ), get_sec(times[5]), get_sec(times[6]) )
+    step7= get_points( get_fixations( 'p02' ), get_sec(times[6]), get_sec(times[7]) )
+    step8= get_points( get_fixations( 'p02' ), get_sec(times[7]), get_sec(times[8]) )
+    step9= get_points( get_fixations( 'p02' ), get_sec(times[8]), get_sec(times[9]) )
+    step10= get_points( get_fixations( 'p02' ), get_sec(times[9]), get_sec(times[10]) )
+    step11= get_points( get_fixations( 'p02' ), get_sec(times[10]), get_sec(times[11]) )
+    step12= get_points( get_fixations( 'p02' ), get_sec(times[11]), get_sec(times[12]) )
+    step13= get_points( get_fixations( 'p02' ), get_sec(times[12]), get_sec(times[13]) )
+    step14= get_points( get_fixations( 'p02' ), get_sec(times[13]), get_sec(times[14]) )
+    step15= get_points( get_fixations( 'p02' ), get_sec(times[14]), get_sec(times[15]) )
+    step16= get_points( get_fixations( 'p02' ), get_sec(times[15]), get_sec(times[16]) )
+    step17= get_points( get_fixations( 'p02' ), get_sec(times[16]), get_sec(times[17]) )
+    step18= get_points( get_fixations( 'p02' ), get_sec(times[17]), get_sec(times[18]) )
+    step19= get_points( get_fixations( 'p02' ), get_sec(times[18]), get_sec(times[19]) )
+    step20= get_points( get_fixations( 'p02' ), get_sec(times[19]), get_sec(times[20]) )
+    step21= get_points( get_fixations( 'p02' ), get_sec(times[20]), get_sec(times[21]) )
+    step22= get_points( get_fixations( 'p02' ), get_sec(times[21]), get_sec(times[22]) )
+    step23= get_points( get_fixations( 'p02' ), get_sec(times[22]), get_sec(times[23]) )
+    step24= get_points( get_fixations( 'p02' ), get_sec(times[23]), get_sec(times[24]) )
+    step25= get_points( get_fixations( 'p02' ), get_sec(times[24]), get_sec(times[25]) )
+    step26= get_points( get_fixations( 'p02' ), get_sec(times[25]), get_sec(times[26]) )
+    step27= get_points( get_fixations( 'p02' ), get_sec(times[26]), get_sec(times[27]) )
+     
+    stepv1, stepi1 = get_vol_and_inv_fix(step1)
+    stepv2, stepi2 = get_vol_and_inv_fix(step2)
+    stepv3, stepi3 = get_vol_and_inv_fix(step3)
+    stepv4, stepi4 = get_vol_and_inv_fix(step4)
+    stepv5, stepi5 = get_vol_and_inv_fix(step5)
+    stepv6, stepi6 = get_vol_and_inv_fix(step6)
+    stepv7, stepi7 = get_vol_and_inv_fix(step7)
+    stepv8, stepi8 = get_vol_and_inv_fix(step8)
+    stepv9, stepi9 = get_vol_and_inv_fix(step9)
+    stepv10, stepi10 = get_vol_and_inv_fix(step10)
+    stepv11, stepi11 = get_vol_and_inv_fix(step11)
+    stepv12, stepi12 = get_vol_and_inv_fix(step12)
+    stepv13, stepi13 = get_vol_and_inv_fix(step13)
+    stepv14, stepi14 = get_vol_and_inv_fix(step14)
+    stepv15, stepi15 = get_vol_and_inv_fix(step15)
+    stepv16, stepi16 = get_vol_and_inv_fix(step16)
+    stepv17, stepi17 = get_vol_and_inv_fix(step17)
+    stepv18, stepi18 = get_vol_and_inv_fix(step18)
+    stepv19, stepi19 = get_vol_and_inv_fix(step19)
+    stepv20, stepi20 = get_vol_and_inv_fix(step20)
+    stepv21, stepi21 = get_vol_and_inv_fix(step21)
+    stepv22, stepi22 = get_vol_and_inv_fix(step22)
+    stepv23, stepi23 = get_vol_and_inv_fix(step23)
+    stepv24, stepi24 = get_vol_and_inv_fix(step24)
+    stepv25, stepi25 = get_vol_and_inv_fix(step25)
+    stepv26, stepi26 = get_vol_and_inv_fix(step26)
+    stepv27, stepi27 = get_vol_and_inv_fix(step27)
+     
+    print 'o3'
+    i = 0
+    o3.append ((float(stepv1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi1)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append (float((stepv2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi2)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi3)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi4)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi5)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi6)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi7)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi8)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi9)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi10)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv11)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi11)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv12)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi12)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv13)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi13)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv14)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi14)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv15)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi15)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv16)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi16)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv17)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi17)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv18)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi18)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv19)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi19)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv20)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi20)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv21)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi21)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv22)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi22)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv23)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#   o3.append ((float(stepi23)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv24)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi24)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv25)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi25)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv26)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi26)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i += 1
+    o3.append ((float(stepv27)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+#    o3.append ((float(stepi27)) / ((get_sec(times[i + 1])) - get_sec(times[i])))
+    i = 0
+    with io.FileIO("Stepsp2VoluntarypSeco3.txt", "w") as file:
+        str3 = " ".join(str(x) for x in o3)
+        file.write(str3)
+# #     plt.figure()
+# #     x = np.arange(1, len(o3) + 1)
+# #     plt.bar(x, o3, width = .4, color = colors)
+# #     plt.title('Origami 3 p02 Voluntary and Involuntary Fix p Sec each step')
 # #     
-# #         ofile.write('P03: \n \n'  )
+# #     print np.mean(o3)
 # #     
-# #         ofile.write('length: %f \n' % len(origami31))
-# #         ofile.write('P3 O1: %f \n' % (np.mean(origami31[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami32))
-# #         ofile.write('P3 O2: %f \n' % (np.mean(origami32[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami33))
-# #         ofile.write('P3 O3: %f \n \n' % (np.mean(origami33[:, 0])))
+# #     hS, eS = difficulty(o3)
+# #     print 'step %d was hard and step %d was easy' % (hS, eS)
 # #     
-# #         ofile.write('P04: \n \n')
-# #         
-# #         ofile.write('length: %f \n' % len(origami41))
-# #         ofile.write('P4 O1: %f \n' % (np.mean(origami41[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami42))
-# #         ofile.write('P4 O2: %f \n' % (np.mean(origami42[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami43))
-# #         ofile.write('P4 O3: %f \n \n'  % (np.mean(origami43[:, 0])))
-# #                 
-# #         ofile.write('P05: \n \n')        
-# #                 
-# #         ofile.write('length: %f \n' % len(origami51))
-# #         ofile.write('P5 O1: %f \n' % (np.mean(origami51[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami52))
-# #         ofile.write('P5 O2: %f \n' % (np.mean(origami52[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami53))
-# #         ofile.write('P5 O3: %f \n \n' % (np.mean(origami53[:, 0])))
-# #         
-# #         ofile.write('P06: \n \n')
-# #                 
-# #         ofile.write('length: %f \n' % len(origami61))
-# #         ofile.write('P6 O1: %f \n' % (np.mean(origami61[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami62))
-# #         ofile.write('P6 O2: %f \n' % (np.mean(origami62[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami63))
-# #         ofile.write('P6 O3: %f \n \n' % (np.mean(origami63[:, 0])))
-# #         
-# #         ofile.write('P07: \n \n')
-# #                 
-# #         ofile.write('length: %f \n' % len(origami71))
-# #         ofile.write('P7 O1: %f \n' % (np.mean(origami71[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami72))
-# #         ofile.write('P7 O2: %f \n' % (np.mean(origami72[:, 0])))
-# #         ofile.write('length: %f \n' % len(origami73))
-# #         ofile.write('P7 O3: %f \n \n' % (np.mean(origami73[:, 0])))
-# #         
-# #     ofile.close()
+# #     labels = np.arange(1, 28)
+# #     lbels = []
+# #     for item in labels:
+# #         lbels.append(str(item))
+# #   
+# #     plt.figure()
+# #     plt.hist((step1[:, 1], step2[:, 1], step3[:, 1], step4[:, 1], step5[:, 1], step6[:, 1], step7[:, 1], step8[:, 1], step9[:, 1], step10[:, 1], step11[:, 1], step12[:, 1], step13[:, 1], step14[:, 1], step15[:, 1], step16[:, 1], step17[:, 1], step18[:, 1], step19[:, 1], step20[:, 1], step21[:, 1], step22[:, 1], step23[:, 1], step24[:, 1], step25[:, 1], step26[:, 1], step27[:, 1]), label = lbels, normed = True)
+# #     plt.legend()
+# #     plt.show()
+# #        
+#     p01[0][0] = "00:00:32"
+#     print p01
+#     origami11 = get_points( get_fixations( 'p01' ), get_sec(p01[0, 0]), get_sec(p01[0, 1]) )
+#     origami21 = get_points( get_fixations( 'p02' ), get_sec(p02[0, 0]), get_sec(p02[0, 1]) )
+#     origami31 = get_points( get_fixations( 'p03' ), get_sec(p03[0, 0]), get_sec(p03[0, 1]) )
+#     origami41 = get_points( get_fixations( 'p04' ), get_sec(p04[0, 0]), get_sec(p04[0, 1]) )
+#     origami51 = get_points( get_fixations( 'p05' ), get_sec(p05[0, 0]), get_sec(p05[0, 1]) )
+#     origami61 = get_points( get_fixations( 'p06' ), get_sec(p06[0, 0]), get_sec(p06[0, 1]) )
+# #    origami71 = get_points( get_fixations( 'p07' ), get_sec(p07[0, 2]), get_sec(p07[0, 3]) )
+#       
+#     origami12 = get_points( get_fixations( 'p01' ), get_sec(p01[1, 0]), get_sec(p01[1, 1]) )
+#     origami22 = get_points( get_fixations( 'p02' ), get_sec(p02[1, 0]), get_sec(p02[1, 1]) )
+#     origami32 = get_points( get_fixations( 'p03' ), get_sec(p03[1, 0]), get_sec(p03[1, 1]) )
+#     origami42 = get_points( get_fixations( 'p04' ), get_sec(p04[1, 0]), get_sec(p04[1, 1]))
+#     origami52 = get_points( get_fixations( 'p05' ), get_sec(p05[1, 0]), get_sec(p05[1, 1]) )
+#     origami62 = get_points( get_fixations( 'p06' ), get_sec(p06[1, 0]), get_sec(p06[1, 1]) )
+# #    origami72 = get_points( get_fixations( 'p07' ), get_sec(p07[1, 2]), get_sec(p07[1, 3]) )
+#       
+#     origami13 = get_points( get_fixations( 'p01' ), get_sec(p01[2, 0]), get_sec(p01[2, 1]) )
+#     origami23 = get_points( get_fixations( 'p02' ), get_sec(p02[2, 0]), get_sec(p02[2, 1]) )
+#     origami33 = get_points( get_fixations( 'p03' ), get_sec(p03[2, 0]), get_sec(p03[2, 1]) )
+#     origami43 = get_points( get_fixations( 'p04' ), get_sec(p04[2, 0]), get_sec(p04[2, 1]) )
+#     origami53 = get_points( get_fixations( 'p05' ), get_sec(p05[2, 0]), get_sec(p05[2, 1]) )
+#     origami63 = get_points( get_fixations( 'p06' ), get_sec(p06[2, 0]), get_sec(p06[2, 1]) )
+# #    origami73 = get_points( get_fixations( 'p07' ), get_sec(p07[2, 2]), get_sec(p07[2, 3]) )
+#       
+#     vol11, inv11 = get_vol_and_inv_fix( origami11 )
+#     vol21, inv21 = get_vol_and_inv_fix( origami21 )
+#     vol31, inv31 = get_vol_and_inv_fix( origami31 )
+#     vol41, inv41 = get_vol_and_inv_fix( origami41 )
+#     vol51, inv51 = get_vol_and_inv_fix( origami51 )
+#     vol61, inv61 = get_vol_and_inv_fix( origami61 )
+# #    vol71, inv71 = get_vol_and_inv_fix( origami71 )
+#       
+#     invVol1 = [vol11, inv11, vol21, inv21, vol31, inv31, vol41, inv41, vol51, inv51, vol61, inv61]
+#       
+#     vol12, inv12 = get_vol_and_inv_fix( origami12 )
+#     vol22, inv22 = get_vol_and_inv_fix( origami22 )
+#     vol32, inv32 = get_vol_and_inv_fix( origami32 )
+#     vol42, inv42 = get_vol_and_inv_fix( origami42 )
+#     vol52, inv52 = get_vol_and_inv_fix( origami52 )
+#     vol62, inv62 = get_vol_and_inv_fix( origami62 )
+# #    vol72, inv72 = get_vol_and_inv_fix( origami72 )
+#       
+#     invVol2 = [vol12, inv12, vol22, inv22, vol32, inv32, vol42, inv42, vol52, inv52, vol62, inv62]
+#       
+#     vol13, inv13 = get_vol_and_inv_fix( origami13 )
+#     vol23, inv23 = get_vol_and_inv_fix( origami23 )
+#     vol33, inv33 = get_vol_and_inv_fix( origami33 )
+#     vol43, inv43 = get_vol_and_inv_fix( origami43 )
+#     vol53, inv53 = get_vol_and_inv_fix( origami53 )
+#     vol63, inv63 = get_vol_and_inv_fix( origami63 )
+# #    vol73, inv73 = get_vol_and_inv_fix( origami73 )
+#       
+#     invVol3 = [vol13, inv13, vol23, inv23, vol33, inv33, vol43, inv43, vol53, inv53, vol63, inv63]
 #   
+# #     x = np.arange(1, 15)
 # #     plt.figure()
-# #     plt.hist(origami21[:, 0], alpha = .5, label = 'p2 o1')
-# #     plt.hist(origami41[:, 0], alpha = .5, label = 'p4 o1')
-# #     plt.legend()
-# 
-#     plt.figure()
-#     plt.hist((origami11[:, 1], origami21[:, 1], origami31[:, 1], origami41[:, 1], origami51[:, 1], origami61[:, 1], origami71[:, 1]), label = ['p01 o1', 'p02 o1', 'p03 o1', 'p04 o1', 'p05 o1', 'p06 o1', 'p07 o1'], normed = True)
-#     plt.legend()
-#     
+# #     plt.bar(x, invVol1, width = .4, color = colors)
+# #     plt.title('O1 Vol Inv Fixations for each person')
 # #     plt.figure()
-# #     plt.hist(origami22[:, 0], alpha = .5, label = 'p2 o2')
-# #     plt.hist(origami42[:, 0], alpha = .5, label = 'p4 o2')
-# #     plt.legend()
-# 
-#     plt.figure()
-#     plt.hist((origami12[:, 1], origami22[:, 1], origami32[:, 1], origami42[:, 1], origami52[:, 1], origami62[:, 1], origami72[:, 1]), label = ['p01 o2', 'p02 o2', 'p03 o2', 'p04 o2', 'p05 o2', 'p06 o2', 'p07 o2'], normed = True)
-#     plt.legend()
-#     
+# #     plt.bar(x, invVol2, width = .4, color = colors)
+# #     plt.title('O2 Vol Inv Fixations for each person')
 # #     plt.figure()
-# #     plt.hist(origami23[:, 0], alpha = .5, label = 'p2 o3')
-# #     plt.hist(origami43[:, 0], alpha = .5, label = 'p4 o4')
-# #     plt.legend()
-#     
-#     plt.figure()
-#     plt.hist((origami13[:, 1], origami23[:, 1], origami33[:, 1], origami43[:, 1], origami53[:, 1], origami63[:, 1], origami73[:, 1]), label = ['p01 o3', 'p02 o3', 'p03 o3', 'p04 o3', 'p05 o3', 'p06 o3', 'p07 o3'], normed = True)
-#     plt.legend()
-#     
+# #     plt.bar(x, invVol3, width = .4, color = colors)
+# #     plt.title('O3 Vol Inv Fixations for each person')
+# #     plt.show()
+# #    
+# #     numbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7]
+# #     x = np.arange(1, 4)
+# #     for i in range(len(invVol1)):
+# #         plt.figure()
+# #         plt.bar(x, [invVol1[i], invVol2[i], invVol3[i]])
+# #         if (i % 2) != 0:
+# #             plt.title('Involuntary Fixations for O1-O3 for person %d' % (numbers[i]))
+# #         else:
+# #             plt.title('Voluntary Fixations for O1-O3 for person %d' % (numbers[i]))
+# #         plt.show()
+# #         
+# #     x = np.arange(1, 7)
+# #     for i in range(len(invVol1)):
+# #         if i % 2 == 0:
+# #             plt.figure()
+# #             plt.bar(x, [invVol1[i], invVol1[i + 1], invVol2[i], invVol2[i + 1], invVol3[i], invVol3[i + 1]])
+# #             plt.title('Vol and Inv Fixations for p0%d O1-O3' % (numbers[i]))
+# #             plt.show()
+# #     
+# #     print('1')
+# #     print
+# #     print((len(origami11)) / (origami11[-1, 0] - origami11[0, 0]))
+# #     print((len(origami21)) / (origami21[-1, 0] - origami21[0, 0]))
+# #     print((len(origami31)) / (origami31[-1, 0] - origami31[0, 0]))
+# #     print((len(origami41)) / (origami41[-1, 0] - origami41[0, 0]))
+# #     print((len(origami51)) / (origami51[-1, 0] - origami51[0, 0]))
+# #     print((len(origami61)) / (origami61[-1, 0] - origami61[0, 0]))
+# #     print((len(origami71)) / (origami71[-1, 0] - origami71[0, 0]))
+# #     print
+# #     print('2')
+# #     print
+# #     print((len(origami12)) / (origami12[-1, 0] - origami12[0, 0]))
+# #     print((len(origami22)) / (origami22[-1, 0] - origami22[0, 0]))
+# #     print((len(origami32)) / (origami32[-1, 0] - origami32[0, 0]))
+# #     print((len(origami42)) / (origami42[-1, 0] - origami42[0, 0]))
+# #     print((len(origami52)) / (origami52[-1, 0] - origami52[0, 0]))
+# #     print((len(origami62)) / (origami62[-1, 0] - origami62[0, 0]))
+# #     print((len(origami72)) / (origami72[-1, 0] - origami72[0, 0]))
+# #     print
+# #     print('3')
+# #     print
+# #     print((len(origami13)) / (origami13[-1, 0] - origami13[0, 0]))
+# #     print((len(origami23)) / (origami23[-1, 0] - origami23[0, 0]))
+# #     print((len(origami33)) / (origami33[-1, 0] - origami33[0, 0]))
+# #     print((len(origami43)) / (origami43[-1, 0] - origami43[0, 0]))
+# #     print((len(origami53)) / (origami53[-1, 0] - origami53[0, 0]))
+# #     print((len(origami63)) / (origami63[-1, 0] - origami63[0, 0]))
+# #     print((len(origami73)) / (origami73[-1, 0] - origami73[0, 0]))
+#       
+# #    x = np.arange(1, 8)
+#     print origami11
+#     length11 = vol11 / (origami11[len(origami11)-1, 0] - origami11[0, 0])
+#     length21 = vol21 / (origami21[-1, 0] - origami21[0, 0])
+#     length31 = vol31 / (origami31[-1, 0] - origami31[0, 0])
+#     length41 = vol41 / (origami41[-1, 0] - origami41[0, 0])
+#     length51 = vol51 / (origami51[-1, 0] - origami51[0, 0])
+#     length61 = vol61 / (origami61[-1, 0] - origami61[0, 0])
+# #   length71 = vol71 / (origami71[-1, 0] - origami71[0, 0])
+#       
+#     o1 = [length11]
+#     o2 = [length21]
+#     o3 = [length31]
+#     o4 = [length41]
+#     o5 = [length51]
+#     o6 = [length61]
+# #    o7 = [length71]
+#     with io.FileIO("C:\Users\mma_v\Documents\VolFixpPersonpSeco1.txt", "w") as file:
+#         file.write(str(length11))
+#         file.write(str(length21))
+#         file.write(str(length31))
+#         file.write(str(length41))
+#         file.write(str(length51))
+#         file.write(str(length61))
+#          
+# #     plt.figure()
+# #     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
+# #     plt.title('Origami 01 Voluntary Fixations per Second per Person')
+# #      
+#     length11 = inv11 / (origami11[-1, 0] - origami11[0, 0])
+#     length21 = inv21 / (origami21[-1, 0] - origami21[0, 0])
+#     length31 = inv31 / (origami31[-1, 0] - origami31[0, 0])
+#     length41 = inv41 / (origami41[-1, 0] - origami41[0, 0])
+#     length51 = inv51 / (origami51[-1, 0] - origami51[0, 0])
+#     length61 = inv61 / (origami61[-1, 0] - origami61[0, 0])
+# #   length71 = inv71 / (origami71[-1, 0] - origami71[0, 0])
+#       
+#     o1.append(length11)
+#     o2.append(length21)
+#     o3.append(length31)
+#     o4.append(length41)
+#     o5.append(length51)
+#     o6.append(length61)
+# #   o7.append(length71)
+#     with io.FileIO("C:\Users\mma_v\Documents\InVolFixpPersonpSeco1.txt", "w") as file:
+#         file.write(str(length11))
+#         file.write(str(length21))
+#         file.write(str(length31))
+#         file.write(str(length41))
+#         file.write(str(length51))
+#         file.write(str(length61))
+#          
+# #     plt.figure()
+# #     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
+# #     plt.title('Origami 01 Involuntary Fixations per Second per Person')
+# #      
+#       
+#     length11 = vol12 / (origami12[-1, 0] - origami12[0, 0])
+#     length21 = vol22 / (origami22[-1, 0] - origami22[0, 0])
+#     length31 = vol32 / (origami32[-1, 0] - origami32[0, 0])
+#     length41 = vol42 / (origami42[-1, 0] - origami42[0, 0])
+#     length51 = vol52 / (origami52[-1, 0] - origami52[0, 0])
+#     length61 = vol62 / (origami62[-1, 0] - origami62[0, 0])
+# #    length71 = vol72 / (origami72[-1, 0] - origami72[0, 0])
+#       
+#     o1.append(length11)
+#     o2.append(length21)
+#     o3.append(length31)
+#     o4.append(length41)
+#     o5.append(length51)
+#     o6.append(length61)
+# #    o7.append(length71)
+#  
+#     with io.FileIO("C:\Users\mma_v\Documents\VolFixpPersonpSeco2.txt", "w") as file:
+#         file.write(str(length11))
+#         file.write(str(length21))
+#         file.write(str(length31))
+#         file.write(str(length41))
+#         file.write(str(length51))
+#         file.write(str(length61))
+#           
+# #     plt.figure()
+# #     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
+# #     plt.title('Origami 02 Voluntary Fixations per Second per Person')
+# #      
+#     length11 = inv12 / (origami12[-1, 0] - origami12[0, 0])
+#     length21 = inv22 / (origami22[-1, 0] - origami22[0, 0])
+#     length31 = inv32 / (origami32[-1, 0] - origami32[0, 0])
+#     length41 = inv42 / (origami42[-1, 0] - origami42[0, 0])
+#     length51 = inv52 / (origami52[-1, 0] - origami52[0, 0])
+#     length61 = inv62 / (origami62[-1, 0] - origami62[0, 0])
+# #    length71 = inv72 / (origami72[-1, 0] - origami72[0, 0])
+#       
+#     o1.append(length11)
+#     o2.append(length21)
+#     o3.append(length31)
+#     o4.append(length41)
+#     o5.append(length51)
+#     o6.append(length61)
+# #    o7.append(length71)
+#     with io.FileIO("C:\Users\mma_v\Documents\InvVolFixpPersonpSeco2.txt", "w") as file:
+#         file.write(str(length11))
+#         file.write(str(length21))
+#         file.write(str(length31))
+#         file.write(str(length41))
+#         file.write(str(length51))
+#         file.write(str(length61))
+#           
+# #     plt.figure()
+# #     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
+# #     plt.title('Origami 02 Involuntary Fixations per Second per Person')
+# #     
+#     length11 = vol13 / (origami13[-1, 0] - origami13[0, 0])
+#     length21 = vol23 / (origami23[-1, 0] - origami23[0, 0])
+#     length31 = vol33 / (origami33[-1, 0] - origami33[0, 0])
+#     length41 = vol43 / (origami43[-1, 0] - origami43[0, 0])
+#     length51 = vol53 / (origami53[-1, 0] - origami53[0, 0])
+#     length61 = vol63 / (origami63[-1, 0] - origami63[0, 0])
+# #    length71 = vol73 / (origami73[-1, 0] - origami73[0, 0])
+#       
+#     o1.append(length11)
+#     o2.append(length21)
+#     o3.append(length31)
+#     o4.append(length41)
+#     o5.append(length51)
+#     o6.append(length61)
+# #    o7.append(length71)
+#     with io.FileIO("C:\Users\mma_v\Documents\VolFixpPersonpSeco3.txt", "w") as file:
+#         file.write(str(length11))
+#         file.write(str(length21))
+#         file.write(str(length31))
+#         file.write(str(length41))
+#         file.write(str(length51))
+#         file.write(str(length61))
+#           
+# #     plt.figure()
+# #     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
+# #     plt.title('Origami 03 Voluntary Fixations per Second per Person')
+# #      
+#     length11 = inv13 / (origami13[-1, 0] - origami13[0, 0])
+#     length21 = inv23 / (origami23[-1, 0] - origami23[0, 0])
+#     length31 = inv33 / (origami33[-1, 0] - origami33[0, 0])
+#     length41 = inv43 / (origami43[-1, 0] - origami43[0, 0])
+#     length51 = inv53 / (origami53[-1, 0] - origami53[0, 0])
+#     length61 = inv63 / (origami63[-1, 0] - origami63[0, 0])
+# #    length71 = inv73 / (origami73[-1, 0] - origami73[0, 0])
+#       
+#     o1.append(length11)
+#     o2.append(length21)
+#     o3.append(length31)
+#     o4.append(length41)
+#     o5.append(length51)
+#     o6.append(length61)
+# #    o7.append(length71)
+#     with io.FileIO("C:\Users\mma_v\Documents\InvVolFixpPersonpSeco3.txt", "w") as file:
+#         file.write(str(length11))
+#         file.write(str(length21))
+#         file.write(str(length31))
+#         file.write(str(length41))
+#         file.write(str(length51))
+#         file.write(str(length61))
+#          
+#     with io.FileIO("C:\Users\mma_v\Documents\VolInvFixpPersonpSec.txt", "w") as file:
+#         str11 = " ".join(str(x) for x in o1)
+#         file.write(str11)
+#         str21 = " ".join(str(x) for x in o2)
+#         file.write(str21)
+#         str31 = " ".join(str(x) for x in o3)
+#         file.write(str31)
+#         str41 = " ".join(str(x) for x in o4)
+#         file.write(str41)
+#         str51 = " ".join(str(x) for x in o5)
+#         file.write(str51)
+#         str61 = " ".join(str(x) for x in o6)
+#         file.write(str61)
+#               
+# #     plt.figure()
+# #     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
+# #     plt.title('Origami 03 Involuntary Fixations per Second per Person')
+# #      
 # #    plt.show()
-#     
-    
+#       
+# #     x = np.arange(1, 7)
+# #      
+# #     plt.figure()
+# #     plt.bar(x, o1, width = .4, color = colors)
+# #     plt.title('Person 01 Voluntary and Involuntary Fixations per Second')
+# #      
+# #     plt.figure()
+# #     plt.bar(x, o2, width = .4, color = colors)
+# #     plt.title('Person 02 Voluntary and Involuntary Fixations per Second')
+# #      
+# #     plt.figure()
+# #     plt.bar(x, o3, width = .4, color = colors)
+# #     plt.title('Person 03 Voluntary and Involuntary Fixations per Second')
+# #      
+# #     plt.figure()
+# #     plt.bar(x, o4, width = .4, color = colors)
+# #     plt.title('Person 04 Voluntary and Involuntary Fixations per Second')
+# #      
+# #     plt.figure()
+# #     plt.bar(x, o5, width = .4, color = colors)
+# #     plt.title('Person 05 Voluntary and Involuntary Fixations per Second')
+# #      
+# #     plt.figure()
+# #     plt.bar(x, o6, width = .4, color = colors)
+# #     plt.title('Person 06 Voluntary and Involuntary Fixations per Second')
+# #      
+# #     plt.figure()
+# #     plt.bar(x, o7, width = .4, color = colors)
+# #     plt.title('Person 07 Voluntary and Involuntary Fixations per Second')
+# #      
+# #     plt.show()
+# #      
+# #     x = [1, 2, 3, 4, 5, 6, 7]
+# #      
+# #    names = ('p01', 'p02', 'p03', 'p04', 'p05', 'p06', 'p07' )
+#       
+#     length11 = ((len(origami11)) / (origami11[-1, 0] - origami11[0, 0]))
+#     length21 = ((len(origami21)) / (origami21[-1, 0] - origami21[0, 0]))
+#     length31 = ((len(origami31)) / (origami31[-1, 0] - origami31[0, 0]))
+#     length41 = ((len(origami41)) / (origami41[-1, 0] - origami41[0, 0]))
+#     length51 = ((len(origami51)) / (origami51[-1, 0] - origami51[0, 0]))
+#     length61 = ((len(origami61)) / (origami61[-1, 0] - origami61[0, 0]))
+# #    length71 = ((len(origami71)) / (origami71[-1, 0] - origami71[0, 0]))
+#     with io.FileIO("C:\Users\mma_v\Documents\FixpPersonpSeco1.txt", "w") as file:
+#         file.write(str(length11))
+#         file.write(str(length21))
+#         file.write(str(length31))
+#         file.write(str(length41))
+#         file.write(str(length51))
+#         file.write(str(length61))
+# #           
+# #     plt.figure()
+# #     plt.bar(x, [length11, length21, length31, length41, length51, length61, length71], width = .4, color = colors) 
+# #     plt.title('Origami 01 Fixations per Second per Person')
+# #      
+#     length12 = ((len(origami12)) / (origami12[-1, 0] - origami12[0, 0]))
+#     length22 = ((len(origami22)) / (origami22[-1, 0] - origami22[0, 0]))
+#     length32 = ((len(origami32)) / (origami32[-1, 0] - origami32[0, 0]))
+#     length42 = ((len(origami42)) / (origami42[-1, 0] - origami42[0, 0]))
+#     length52 = ((len(origami52)) / (origami52[-1, 0] - origami52[0, 0]))
+#     length62 = ((len(origami62)) / (origami62[-1, 0] - origami62[0, 0]))
+# #    length72 = ((len(origami72)) / (origami72[-1, 0] - origami72[0, 0]))
+#     with io.FileIO("C:\Users\mma_v\Documents\FixpPersonpSeco2.txt", "w") as file:
+#         file.write(str(length12))
+#         file.write(str(length22))
+#         file.write(str(length32))
+#         file.write(str(length42))
+#         file.write(str(length52))
+#         file.write(str(length62))
+#          
+# #     plt.figure()
+# #     plt.bar(x, [length12, length22, length32, length42, length52, length62, length72], width = .4, color = colors )
+# #     plt.title('Origami 02 Fixations per Second per Person')
+# #     
+#     length13 = ((len(origami13)) / (origami13[-1, 0] - origami13[0, 0]))
+#     length23 = ((len(origami23)) / (origami23[-1, 0] - origami23[0, 0]))
+#     length33 = ((len(origami33)) / (origami33[-1, 0] - origami33[0, 0]))
+#     length43 = ((len(origami43)) / (origami43[-1, 0] - origami43[0, 0]))
+#     length53 = ((len(origami53)) / (origami53[-1, 0] - origami53[0, 0]))
+#     length63 = ((len(origami63)) / (origami63[-1, 0] - origami63[0, 0]))
+# #    length73 = ((len(origami73)) / (origami73[-1, 0] - origami73[0, 0]))
+#     with io.FileIO("C:\Users\mma_v\Documents\FixpPersonpSeco3.txt", "w") as file:
+#         file.write(str(length13))
+#         file.write(str(length23))
+#         file.write(str(length33))
+#         file.write(str(length43))
+#         file.write(str(length53))
+#         file.write(str(length63))
+#           
+# #     plt.figure()
+# #     plt.bar(x, [length13, length23, length33, length43, length53, length63, length73], width = .4, color = colors)
+# #     plt.title('Origami 03 Fixations per Second per Person')
+# #      
+# #     for i in range(len(o1)):
+# #         print i
+# #         print o1[i]
+# #         print o2[i]
+# #         print o3[i]
+# #         print o4[i]
+# #         print o5[i]
+# #         print o6[i]
+# #         print o7[i]
+# #     
+# # #     with io.FileIO('Mean fixation times for Origami.txt', 'w') as ofile:
+# # #            
+# # #         ofile.write('Mean fixation time for all \n \n')
+# # #         
+# # #         ofile.write('P01: \n \n')
+# # #         
+# # #         ofile.write('length: %f \n' % len(origami11))
+# # #         ofile.write('P1 O1: %f \n' % (np.mean(origami11[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami12))
+# # #         ofile.write('P1 O2: %f \n' % (np.mean(origami12[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami13))
+# # #         ofile.write('P1 O3: %f \n \n' % (np.mean(origami13[:, 0])))
+# # #         
+# # #         ofile.write('P02: \n \n')
+# # #         
+# # #         ofile.write('length: %f \n' % len(origami21))
+# # #         ofile.write('P2 O1: %f \n' % (np.mean(origami21[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami22))
+# # #         ofile.write('P2 O2: %f \n' % (np.mean(origami22[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami23))
+# # #         ofile.write('P2 O3: %f \n \n' % (np.mean(origami23[:, 0])))
+# # #     
+# # #         ofile.write('P03: \n \n'  )
+# # #     
+# # #         ofile.write('length: %f \n' % len(origami31))
+# # #         ofile.write('P3 O1: %f \n' % (np.mean(origami31[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami32))
+# # #         ofile.write('P3 O2: %f \n' % (np.mean(origami32[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami33))
+# # #         ofile.write('P3 O3: %f \n \n' % (np.mean(origami33[:, 0])))
+# # #     
+# # #         ofile.write('P04: \n \n')
+# # #         
+# # #         ofile.write('length: %f \n' % len(origami41))
+# # #         ofile.write('P4 O1: %f \n' % (np.mean(origami41[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami42))
+# # #         ofile.write('P4 O2: %f \n' % (np.mean(origami42[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami43))
+# # #         ofile.write('P4 O3: %f \n \n'  % (np.mean(origami43[:, 0])))
+# # #                 
+# # #         ofile.write('P05: \n \n')        
+# # #                 
+# # #         ofile.write('length: %f \n' % len(origami51))
+# # #         ofile.write('P5 O1: %f \n' % (np.mean(origami51[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami52))
+# # #         ofile.write('P5 O2: %f \n' % (np.mean(origami52[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami53))
+# # #         ofile.write('P5 O3: %f \n \n' % (np.mean(origami53[:, 0])))
+# # #         
+# # #         ofile.write('P06: \n \n')
+# # #                 
+# # #         ofile.write('length: %f \n' % len(origami61))
+# # #         ofile.write('P6 O1: %f \n' % (np.mean(origami61[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami62))
+# # #         ofile.write('P6 O2: %f \n' % (np.mean(origami62[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami63))
+# # #         ofile.write('P6 O3: %f \n \n' % (np.mean(origami63[:, 0])))
+# # #         
+# # #         ofile.write('P07: \n \n')
+# # #                 
+# # #         ofile.write('length: %f \n' % len(origami71))
+# # #         ofile.write('P7 O1: %f \n' % (np.mean(origami71[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami72))
+# # #         ofile.write('P7 O2: %f \n' % (np.mean(origami72[:, 0])))
+# # #         ofile.write('length: %f \n' % len(origami73))
+# # #         ofile.write('P7 O3: %f \n \n' % (np.mean(origami73[:, 0])))
+# # #         
+# # #     ofile.close()
+# #   
+# # #     plt.figure()
+# # #     plt.hist(origami21[:, 0], alpha = .5, label = 'p2 o1')
+# # #     plt.hist(origami41[:, 0], alpha = .5, label = 'p4 o1')
+# # #     plt.legend()
+# # 
+# #     plt.figure()
+# #     plt.hist((origami11[:, 1], origami21[:, 1], origami31[:, 1], origami41[:, 1], origami51[:, 1], origami61[:, 1], origami71[:, 1]), label = ['p01 o1', 'p02 o1', 'p03 o1', 'p04 o1', 'p05 o1', 'p06 o1', 'p07 o1'], normed = True)
+# #     plt.legend()
+# #     
+# # #     plt.figure()
+# # #     plt.hist(origami22[:, 0], alpha = .5, label = 'p2 o2')
+# # #     plt.hist(origami42[:, 0], alpha = .5, label = 'p4 o2')
+# # #     plt.legend()
+# # 
+# #     plt.figure()
+# #     plt.hist((origami12[:, 1], origami22[:, 1], origami32[:, 1], origami42[:, 1], origami52[:, 1], origami62[:, 1], origami72[:, 1]), label = ['p01 o2', 'p02 o2', 'p03 o2', 'p04 o2', 'p05 o2', 'p06 o2', 'p07 o2'], normed = True)
+# #     plt.legend()
+# #     
+# # #     plt.figure()
+# # #     plt.hist(origami23[:, 0], alpha = .5, label = 'p2 o3')
+# # #     plt.hist(origami43[:, 0], alpha = .5, label = 'p4 o4')
+# # #     plt.legend()
+# #     
+# #     plt.figure()
+# #     plt.hist((origami13[:, 1], origami23[:, 1], origami33[:, 1], origami43[:, 1], origami53[:, 1], origami63[:, 1], origami73[:, 1]), label = ['p01 o3', 'p02 o3', 'p03 o3', 'p04 o3', 'p05 o3', 'p06 o3', 'p07 o3'], normed = True)
+# #     plt.legend()
+# #     
+# # #    plt.show()
+# #     
+#      
     
